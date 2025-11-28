@@ -1,0 +1,35 @@
+# ---------------------------------------
+# Typst build artefacts
+# ---------------------------------------
+# Vygenerované PDF soubory
+*.pdf
+
+# Profily a další diagnostické výstupy Typstu
+*.typst-profile
+
+# Složka pro kompilované výstupy (pokud ji používáš)
+build/
+out/
+dist/
+
+# ---------------------------------------
+# Editor settings
+# ---------------------------------------
+
+# VS Code workspace settings
+.vscode/
+.history/
+
+# ---------------------------------------
+# OS-specific junk
+# ---------------------------------------
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# Linux temp files
+*~
