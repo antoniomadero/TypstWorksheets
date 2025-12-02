@@ -4,9 +4,9 @@
   columns: 2,
   gutter: 1cm,
   [
-    #include "rozvoz-pizza.typ"
+    #include "7-5-zlomky_nasobeni.typ"
   ],
   [
-    #include "rozvoz-pizza.typ"
+    #include "7-5-zlomky_nasobeni.typ"
   ]
 )
