@@ -2,7 +2,6 @@
 
 #grid(
   columns: 2,
-  rows: 2,
   gutter: 1cm,
   [
     #include "7-5-zlomky_nasobeni.typ"

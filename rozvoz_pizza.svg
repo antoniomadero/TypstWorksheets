@@ -35,14 +35,14 @@
   <line class="edge" x1="350" y1="500" x2="600" y2="500"/><text x="470" y="490">7</text>
   <line class="edge" x1="250" y1="312.5" x2="350" y2="500"/><text x="270" y="400">8</text>
   <line class="edge" x1="112.5" y1="287.5" x2="287.5" y2="112.5"/><text x="200" y="180">9</text>
-  <line class="edge" x1="425" y1="250" x2="500" y2="105"/><text x="460" y="180">4</text>
-  <line class="edge" x1="500" y1="105" x2="700" y2="150"/><text x="600" y="120">6</text>
-  <line class="edge" x1="700" y1="150" x2="550" y2="350"/><text x="620" y="250">5</text>
-  <line class="edge" x1="550" y1="350" x2="350" y2="500"/><text x="450" y="420">6</text>
+  <line class="edge" x1="445" y1="250" x2="495" y2="105"/><text x="455" y="180">4</text>
+  <line class="edge" x1="500" y1="75" x2="700" y2="150"/><text x="600" y="100">6</text>
+  <line class="edge" x1="700" y1="150" x2="550" y2="350"/><text x="610" y="250">5</text>
+  <line class="edge" x1="550" y1="350" x2="350" y2="500"/><text x="450" y="410">6</text>
   
   <!-- Jednosměrné -->
   <line class="edge arrow" x1="325" y1="100" x2="475" y2="85"/><text x="400" y="85">5</text>
-  <line class="edge arrow" x1="700" y1="175" x2="750" y2="325"/><text x="720" y="250">6</text>
+  <line class="edge arrow" x1="710" y1="175" x2="750" y2="325"/><text x="740" y="250">6</text>
   
   <!-- Další obousměrné -->
   <line class="edge" x1="250" y1="300" x2="550" y2="350"/><text x="400" y="315">7</text>
