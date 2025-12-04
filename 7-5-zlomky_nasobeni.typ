@@ -1,7 +1,7 @@
 #set enum( spacing: 1.8em)
 
 == Písemná práce – Násobení zlomků 
-Jméno a příjmení: ________________________
+Jméno a příjmení:
 
 Vynásobte zlomky a výsledek zkraťte na základní tvar.
 #text(size: 1.2em)[
