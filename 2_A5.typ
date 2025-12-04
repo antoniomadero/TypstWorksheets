@@ -4,11 +4,11 @@
 
 #grid(
   columns: 2,
-  gutter: 6cm,
+  gutter: 1cm,
   [
-    #include "7-5-zlomky-nasobeni-PS.typ"
+    #include "6-6-desetinnacisla-scit_odcit.typ"
   ],
   [
-    #include "7-5-zlomky-nasobeni-PS.typ"
+    #include "6-6-desetinnacisla-scit_odcit.typ"
   ]
 )
