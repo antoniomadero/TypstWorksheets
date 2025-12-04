@@ -9,6 +9,6 @@
     #include "6-6-desetinnacisla-scit_odcit.typ"
   ],
   [
-    #include "6-6-desetinnacisla-scit_odcit.typ"
+    #include "6-6-desetinnacisla-scit_odcit_B.typ"
   ]
 )

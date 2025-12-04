@@ -3,7 +3,7 @@
 #align(center)[
   == Písemka – Sčítání a odčítání desetinných čísel
 ]
-=== Jméno a příjmení: ______________________
+=== Jméno a příjmení:
 =
 + 6,42 + 3,7 =
 + 14,8 − 9,25 =
