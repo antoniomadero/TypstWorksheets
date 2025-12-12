@@ -1,7 +1,7 @@
 #set page(width: 29.7cm, height: 21cm, margin: 1cm)
 
-#set enum(spacing: 1.2em, numbering: "a)")
-#show enum: set text(size: 1.2em)
+#set enum(spacing: 1.3em, numbering: "a)")
+#show enum: set text(size: 1.3em)
 
 #grid(
   columns: 2,
@@ -11,6 +11,6 @@
     #include "6-7-desetinnacisla_nasobeni.typ"
   ],
   [
-    #include "6-7-desetinnacisla_nasobeni.typ"
+    #include "6-7-desetinnacisla_nasobeni_B.typ"
   ]
 )

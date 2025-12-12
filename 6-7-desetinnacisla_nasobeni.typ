@@ -5,7 +5,7 @@ Jméno a příjmení:
 Úkol: Vypočítejte následující příklady.
 
 #text(size: 12pt)[
-  + 3,4 · 2,5 = 
++ 3,4 · 2,5 = 
 + 0,56 · 8 = 
 + 4,08 · 0,3 =
 + 12,5 · 0,04 =
