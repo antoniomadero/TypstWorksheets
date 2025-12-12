@@ -1,16 +1,16 @@
 #set page(width: 29.7cm, height: 21cm, margin: 1cm)
 
-#set enum(spacing: 3em)
+#set enum(spacing: 1em, numbering: "a)")
 #show enum: set text(size: 1.2em)
 
 #grid(
   columns: 2,
-  gutter: 6cm,
+  gutter: 3.5cm,
   
   [
-    #include "7-5-zlomky_deleni_A.typ"
+    #include "6-7-desetinnacisla_nasobeni.typ"
   ],
   [
-    #include "7-5-zlomky_deleni_B.typ"
+    #include "6-7-desetinnacisla_nasobeni.typ"
   ]
 )
