@@ -1,6 +1,6 @@
 #set page(width: 29.7cm, height: 21cm, margin: 1cm)
 
-#set enum(spacing: 1em, numbering: "a)")
+#set enum(spacing: 1.2em, numbering: "a)")
 #show enum: set text(size: 1.2em)
 
 #grid(
