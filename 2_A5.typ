@@ -3,14 +3,15 @@
 #set enum(spacing: 1.3em, numbering: "a)")
 #show enum: set text(size: 1.3em)
 
+
 #grid(
   columns: 2,
   gutter: 3.5cm,
   
   [
-    #include "6-7-desetinnacisla_nasobeni.typ"
+    #include "7-7-smisenacisla.typ"
   ],
   [
-    #include "6-7-desetinnacisla_nasobeni_B.typ"
+    #include "7-7-smisenacisla.typ"
   ]
 )
