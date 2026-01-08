@@ -6,12 +6,12 @@
 
 #grid(
   columns: 2,
-  gutter: 3.5cm,
+  gutter: 5.5cm,
   
   [
-    #include "7-7-smisenacisla.typ"
+    #include "7-9-stredova-soumernost-PP.typ"
   ],
   [
-    #include "7-7-smisenacisla.typ"
+    #include "7-9-stredova-soumernost-PP.typ"
   ]
 )

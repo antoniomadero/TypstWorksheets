@@ -15,7 +15,7 @@ Při dělení přirozeného čísla přirozeným číslem, kdy výsledek není c
     *Příklad 1:*
   + $7 : 2 =$
   + $5 : 4 =$
-  + $9 : 3 =$
+  + $3 : 9 =$
   + $8 : 5 =$
   ],
   [
@@ -79,7 +79,7 @@ Při dělení desetinného čísla desetinným číslem *odstraníme desetinnou 
   + $4,8 : 1,2 =$
   + $7,5 : 2,5 =$
   + $9,6 : 0,4 =$
-  + $12,3 : 3,5 =$
+  + $12,25 : 3,5 =$
   ],
   [
     *Příklad 2:*
