@@ -1,5 +1,5 @@
 = Opakování na pololetní písemnou práci 7. ročník
-+ Zkrať na základní tvar
+* 1. Zkrať na základní tvar *
 
 #grid(
   columns: 2,
@@ -22,7 +22,7 @@
     $18/30$ = \
     ])
 
-+ Převeď na smíšené číslo
+* 2. Převeď na smíšené číslo *
 #grid(
   columns: 2,
   gutter: 5cm,
@@ -44,7 +44,7 @@
     $17/6$ = \
     ])
 
-+ Převeď na zlomek
+* 3. Převeď na zlomek *
 
 #grid(
   columns: 2,
@@ -68,10 +68,69 @@
     ])
 
 
-+ Sčítání/Odčítání - vypočítej a výsledek uprav na základní tvar
+* 4. Sčítání/Odčítání - vypočítej a výsledek uprav na základní tvar *
+#grid(
+  columns: 2,
+  gutter: 5cm,
+    
+  [ 
+    #set par(leading: 1.5em)
+    $2/3 + 1/6$ = \
+    $5/4 - 3/8$ = \
+    $7/10 + 2/5$ = \
+    $9/12 - 1/3$ = \
+    $3/5 + 4/15$ = \
+],
+  [
+    #set par(leading: 1.5em)
+    $4/5 - 2/10$ = \
+    $11/6 + 1/2$ = \
+    $5/8 - 3/16$ = \
+    $7/9 + 2/3$ = \
+    $6/7 - 1/14$ = \
+    ])
 
-+ Násobení - vypočítej a výsledk uprav na základní tvar
+* 5. Násobení - vypočítej a výsledk uprav na základní tvar *
+#grid(
+  columns: 2,
+  gutter: 5cm,
+    
+  [ 
+    #set par(leading: 1.5em)
+    $2/3 dot 3/4$ = \
+    $5/6 dot 2/5$ = \
+    $7/8 dot 4/7$ = \
+    $9/10 dot 5/9$ = \
+    $3/4 dot 8/15$ = \
+],
+  [
+    #set par(leading: 1.5em)
+    $4/5 dot 5/8$ = \
+    $11/12 dot 3/11$ = \
+    $5/9 dot 6/10$ = \
+    $7/8 dot 2/7$ = \
+    $6/13 dot 13/18$ = \
+    ])
 
-+ Dělení - vypočítej a výsledk uprav na základní tvar
+* 6. Dělení - vypočítej a výsledk uprav na základní tvar *
+#grid(
+  columns: 2,
+  gutter: 5cm,
+    
+  [ 
+    #set par(leading: 1.5em)
+    $2/3 div 3/4$ = \
+    $5/6 div 2/5$ = \
+    $7/8 div 4/7$ = \
+    $9/10 div 5/9$ = \
+    $3/4 div 8/15$ = \
+],
+  [
+    #set par(leading: 1.5em)
+    $4/5 div 5/8$ = \
+    $11/12 div 3/11$ = \
+    $5/9 div 6/10$ = \
+    $7/8 div 2/7$ = \
+    $6/13 div 13/18$ = \
+    ])
 
-+ Středová souměrnost - zobraz obraz v souměrnosti podle středu S
