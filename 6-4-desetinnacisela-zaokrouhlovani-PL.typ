@@ -34,7 +34,7 @@
     + $ 6,7098 \u{2250}$
 
 ],
-  [ *c) Zakrouhli na destiny:*
+  [ *c) Zakrouhli na desetiny:*
     + $ 3,59 \u{2250}$
     + $ 7,842 \u{2250}$
     + $ 0,999 \u{2250}$
