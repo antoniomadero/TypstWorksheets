@@ -1,9 +1,9 @@
 #set page(margin: 2cm)
 #set text(font: "Corbel")
-\u{2250} Pololetní písemná práce 6. ročník
+= Pololetní písemná práce 6. ročník
 Jméno a příjmení:  #h(3fr) Body: #h(1fr) Známka: 
 
-* 1. Zaokrohli dle zadání * #h(1fr) 8 body
+* 1. Zaokrouhli dle zadání * #h(1fr) 8 body
 
 #set text(size: 0.9em)
 #grid(
@@ -57,22 +57,62 @@ Jméno a příjmení:  #h(3fr) Body: #h(1fr) Známka:
   
   [ 
     #set par(leading: 1.5em)
-    $12,5 + 3,75 + 0,625$ = \
-    $45,6 - 12,4 + 7,25$ = \
-    $9,875 + 4,125 - 2,5$ = \
-    $100,2 - 45,75 - 20,5$ = \
+    $3,75 + 0,625$ = \
+    $45,6 - 12,4$ = \
+    $9,875 + 4,125$ = \
+    $100,2 - 45,75$ = \
    
   ],
   [ 
       #set par(leading: 1.5em)
-      $8,4 + 2,35 + 6,125$ = \
-      $60,5 - 15,25 + 10,75$ = \
-      $14,625 + 3,5 - 7,875$ = \
-      $80,9 - 30,4 - 25,75$ = \
+      $2,35 + 6,125$ = \
+      $60,5 - 15,57$ = \
+      $14,6255 - 7,875$ = \
+      $30,09 + 25,75$ = \
     
   ])
 
 * 3. Násobení - vypočítej * #h(1fr) 8 body
+
+
+#set underline(offset: -1em,)
+#grid(columns: (1fr, 1fr, 1fr, 1fr), gutter: 2em,
+[
+
+
+#align(right)[
+$2,3$ \
+$dot 4,5$ \
+#underline("        ")  
+]
+],
+[
+
+#align(right)[
+$2,3$ \
+$dot 4,5$ \
+#underline("        ")  
+]
+],
+[
+
+#align(right)[
+$0,75$  \
+$dot 1,2  $  \
+#underline("        ")  
+]
+],
+[
+
+#align(right)[
+$3,14$ \
+$dot 2,7  $ \
+#underline("        ")  
+]
+])
+
+
+
 
 * 4. Dělení - vypočítej (beze zbytku) a proveď zkoušku * #h(1fr) 8 body
 
