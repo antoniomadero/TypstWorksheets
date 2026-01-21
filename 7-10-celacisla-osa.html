@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pohyb po číselné ose</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f0f0f0;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .input-section {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            align-items: center;
+        }
+        #expression {
+            flex: 1;
+            padding: 10px;
+            font-size: 18px;
+            border: 2px solid #4CAF50;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background: #4CAF50;
+            color: white;
+            font-weight: bold;
+        }
+        button:hover {
+            background: #45a049;
+        }
+        .speed-control {
+            margin-bottom: 20px;
+        }
+        .speed-control label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        .number-line {
+            position: relative;
+            height: 150px;
+            margin: 40px 0;
+        }
+        .line {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: #333;
+        }
+        .tick {
+            position: absolute;
+            top: 50%;
+            width: 2px;
+            height: 20px;
+            background: #333;
+            transform: translateY(-50%);
+        }
+        .tick-label {
+            position: absolute;
+            top: calc(50% + 15px);
+            transform: translateX(-50%);
+            font-size: 14px;
+            font-weight: bold;
+        }
+        .avatar {
+            position: absolute;
+            top: 0;
+            width: 60px;
+            height: 60px;
+            transition: left 0.3s linear;
+            transform: translateX(-60%);
+        }
+        .avatar.flipped {
+            transform: translateX(-60%) scaleX(-1);
+        }
+        .new-example {
+            display: block;
+            margin: 20px auto 0;
+            background: #2196F3;
+        }
+        .new-example:hover {
+            background: #0b7dda;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 style="text-align: center; color: #333;">Pohyb po číselné ose</h1>
+        
+        <div class="input-section">
+            <input type="text" id="expression" placeholder="Např: -3+5 nebo -5+(-3)">
+            <button onclick="executeExpression()">Proveď!</button>
+        </div>
+        
+        <div class="speed-control">
+            <label for="speed">Rychlost (1-5):</label>
+            <input type="range" id="speed" min="1" max="5" value="3" style="width: 200px;">
+            <span id="speedValue">3</span>
+        </div>
+        
+        <div class="number-line">
+            <div class="line"></div>
+            <div id="ticks"></div>
+            <div class="avatar" id="avatar">
+                <svg viewBox="0 0 100 100">
+                    <!-- Hlava -->
+                    <ellipse cx="60" cy="25" rx="12" ry="15" fill="#FFB6C1"/>
+                    <!-- Vlasy -->
+                    <path d="M 48 18 Q 50 10 60 12 Q 70 14 72 20" fill="#8B4513" stroke="#8B4513" stroke-width="2"/>
+                    <!-- Oko -->
+                    <circle cx="65" cy="24" r="2" fill="#333"/>
+                    <!-- Úsměv -->
+                    <path d="M 62 30 Q 65 32 68 30" stroke="#333" fill="none" stroke-width="1.5"/>
+                    <!-- Nos -->
+                    <path d="M 67 26 L 69 28" stroke="#333" fill="none" stroke-width="1"/>
+                    <!-- Tělo -->
+                    <rect x="52" y="40" width="18" height="28" fill="#4CAF50" rx="4"/>
+                    <!-- Pravá ruka dopředu -->
+                    <rect x="70" y="45" width="8" height="18" fill="#4CAF50" rx="3"/>
+                    <circle cx="78" cy="63" r="4" fill="#FFB6C1"/>
+                    <!-- Levá ruka dozadu -->
+                    <rect x="44" y="48" width="8" height="15" fill="#3d8b40" rx="3"/>
+                    <!-- Nohy -->
+                    <rect x="54" y="68" width="7" height="18" fill="#2196F3" rx="2"/>
+                    <rect x="61" y="68" width="7" height="18" fill="#2196F3" rx="2"/>
+                    <!-- Boty -->
+                    <ellipse cx="57" cy="86" rx="5" ry="3" fill="#333"/>
+                    <ellipse cx="64" cy="86" rx="5" ry="3" fill="#333"/>
+                </svg>
+            </div>
+        </div>
+        
+        <button class="new-example" onclick="resetExample()">Nový příklad</button>
+    </div>
+
+    <script>
+        const MIN = -20;
+        const MAX = 20;
+        let currentPosition = 0;
+        let isAnimating = false;
+
+        const speedSlider = document.getElementById('speed');
+        const speedValue = document.getElementById('speedValue');
+        const avatar = document.getElementById('avatar');
+        const ticksContainer = document.getElementById('ticks');
+
+        speedSlider.addEventListener('input', () => {
+            speedValue.textContent = speedSlider.value;
+        });
+
+        function initializeTicks() {
+            const lineWidth = ticksContainer.parentElement.offsetWidth;
+            
+            for (let i = MIN; i <= MAX; i++) {
+                const tick = document.createElement('div');
+                tick.className = 'tick';
+                const position = ((i - MIN) / (MAX - MIN)) * 100;
+                tick.style.left = position + '%';
+                
+                if (i % 5 === 0) {
+                    tick.style.height = '30px';
+                    const label = document.createElement('div');
+                    label.className = 'tick-label';
+                    label.textContent = i;
+                    label.style.left = position + '%';
+                    ticksContainer.appendChild(label);
+                }
+                
+                ticksContainer.appendChild(tick);
+            }
+            
+            updateAvatarPosition();
+        }
+
+        function updateAvatarPosition() {
+            const position = ((currentPosition - MIN) / (MAX - MIN)) * 100;
+            avatar.style.left = position + '%';
+        }
+
+        function getStepDuration() {
+            const speed = parseInt(speedSlider.value);
+            const durations = [500, 400, 300, 200, 100];
+            return durations[speed - 1];
+        }
+
+
+
+        function parseExpression(expr) {
+            expr = expr.replace(/\s/g, '');
+            expr = expr.replace(/\(/g, '').replace(/\)/g, '');
+            
+            const actions = [];
+            let i = 0;
+            
+            while (i < expr.length) {
+                if (expr[i] === '+') {
+                    i++;
+                    continue;
+                }
+                
+                // Spočítáme počet po sobě jdoucích mínusů
+                let minusCount = 0;
+                while (i < expr.length && expr[i] === '-') {
+                    minusCount++;
+                    i++;
+                }
+                
+                // Přečteme číslo
+                let num = '';
+                while (i < expr.length && expr[i] >= '0' && expr[i] <= '9') {
+                    num += expr[i];
+                    i++;
+                }
+                
+                if (num) {
+                    const value = parseInt(num);
+                    // Lichý počet mínusů = jdi doleva, sudý = jdi doprava
+                    actions.push({
+                        steps: value,
+                        goLeft: minusCount % 2 === 1
+                    });
+                }
+            }
+            
+            console.log('Parsed actions:', actions);
+            return actions;
+        }
+
+        async function executeExpression() {
+            if (isAnimating) return;
+            
+            const expression = document.getElementById('expression').value;
+            if (!expression.trim()) {
+                alert('Zadejte příklad!');
+                return;
+            }
+            
+            isAnimating = true;
+            const actions = parseExpression(expression);
+            
+            for (const action of actions) {
+                if (action.goLeft) {
+                    // Otočit doleva
+                    avatar.classList.add('flipped');
+                    await new Promise(resolve => setTimeout(resolve, 150));
+                    
+                    // Jít doleva
+                    await moveStepsSimple(action.steps, -1);
+                    
+                    // Otočit zpět doprava
+                    avatar.classList.remove('flipped');
+                    await new Promise(resolve => setTimeout(resolve, 150));
+                } else {
+                    // Jít doprava (základní směr)
+                    await moveStepsSimple(action.steps, 1);
+                }
+            }
+            
+            isAnimating = false;
+        }
+
+        async function moveStepsSimple(steps, direction) {
+            const duration = getStepDuration();
+            
+            for (let i = 0; i < steps; i++) {
+                currentPosition += direction;
+                updateAvatarPosition();
+                await new Promise(resolve => setTimeout(resolve, duration));
+            }
+        }
+
+        function resetExample() {
+            if (isAnimating) return;
+            
+            currentPosition = 0;
+            updateAvatarPosition();
+            document.getElementById('expression').value = '';
+            avatar.classList.remove('flipped');
+        }
+
+        document.getElementById('expression').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                executeExpression();
+            }
+        });
+
+        initializeTicks();
+    </script>
+</body>
+</html>
