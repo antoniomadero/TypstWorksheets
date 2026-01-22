@@ -9,9 +9,9 @@
   gutter: 5.5cm,
   
   [
-    #include "7-9-stredova-soumernost-PP.typ"
+    #include "7-11-cela-cisla-scitani-odcitani.typ"
   ],
   [
-    #include "7-9-stredova-soumernost-PP.typ"
+    #include "7-11-cela-cisla-scitani-odcitani.typ"
   ]
 )

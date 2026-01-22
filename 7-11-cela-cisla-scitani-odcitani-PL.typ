@@ -1,17 +1,20 @@
 #set page(margin: 1.5cm)
 #set enum(spacing: 1.2em, numbering: "a)")
 
+
 = Celá čísla - sčítání a odčítání
+
 * Postup: * - Začneme od prvního čísla a každé další číslo k němu buď přičteme, nebo odečteme. Pokud jsou u sebe dvě čísla se znaménkem + nebo -, znamená to sčítání. Pokud je mezi nimi znaménko + a -, znamená to odečítání.
 
 * Vzor: * 5 + 3 - 12 + 1 = -3
 
 * Cvičení 1: * Vypočítejte následující příklady:
+
   + 7 + 4 - 10 + 2 =
   + 15 - 5 + 3 - 8 =
   + 20 + 10 - 25 + 5 =
   + 0 + 12 - 7 + 1 =
-
+\
 * Tip: * Při sčítání a odčítání celých čísel si můžete pomoci číselnou osou nebo si představit pohyb vpřed a vzad.
 
 #image("images/celacisla_osa.png")
@@ -19,7 +22,9 @@
 * Vzor: * (-3) + 9 - (-6) = 12
 
   * Postup * : Stejně jako v předchozím cvičení začneme od prvního čísla a postupně přičítáme nebo odečítáme další čísla podle jejich znamének. Nezapomeňte, že 	#underline[*odečítání záporného čísla*] je stejné jako *přičítání* jeho *kladného* protějšku .
-
+\
+\
+#show enum: set text(size: 0.9em)
 * Cvičení 2: * Vypočítejte následující příklady s celými čísly:
 #columns(2)[
 
@@ -61,6 +66,35 @@
       + $ (-8) + 12 - 9 = $
       + $ 7 - (-6) - 2 = $
   ]
+
+*Cvičení 3:*
+
+#columns(3)[
+  + $ 14 - (-4) + 6 = $
+  + $ (-5) + 10 - 3 = $
+  + $ 9 - (-2) + 8 = $
+  + $ (-12) + 20 - (-5) = $
+  + $ 13 - 7 + (-4) = $
+  + $ 25 - (-3) + (-3) = $
+  #colbreak() 
+
+      16. $ 5 + (-15) + 10 = $
+      + $ (-9) - (-3) + 7 = $
+      + $ 18 - 12 + (-6) = $
+      + $ (-4) + 16 - 9 = $
+      + $ 11 - (-8) - 5 = $
+      + $ (-21) - (-18) = $
+
+      #colbreak() 
+
+      21. $ 7 + (-2) - 6 = $
+      + $ (-10) + 14 - (-4) = $
+      + $ 15 - 9 + 3 = $
+      + $ (-6) + 8 - 11 = $
+      + $ 4 - (-7) + (-3) = $
+      + $ (-12) + (-4) - (-8) = $
+
+]
 
 
 
