@@ -3,8 +3,8 @@
 
 
 = Celá čísla - sčítání a odčítání
-
-* Postup: * - Začneme od prvního čísla a každé další číslo k němu buď přičteme, nebo odečteme. Pokud jsou u sebe dvě čísla se znaménkem + nebo -, znamená to sčítání. Pokud je mezi nimi znaménko + a -, znamená to odečítání.
+\
+* Postup: * - Začneme od prvního čísla a každé další číslo k němu buď přičteme, nebo odečteme.
 
 * Vzor: * 5 + 3 - 12 + 1 = -3
 
@@ -67,7 +67,7 @@
       + $ 7 - (-6) - 2 = $
   ]
 
-*Cvičení 3:*
+*Cvičení 4:*
 
 #columns(3)[
   + $ 14 - (-4) + 6 = $
@@ -78,7 +78,7 @@
   + $ 25 - (-3) + (-3) = $
   #colbreak() 
 
-      16. $ 5 + (-15) + 10 = $
+      7. $ 5 + (-15) + 10 = $
       + $ (-9) - (-3) + 7 = $
       + $ 18 - 12 + (-6) = $
       + $ (-4) + 16 - 9 = $
@@ -87,7 +87,7 @@
 
       #colbreak() 
 
-      21. $ 7 + (-2) - 6 = $
+      14. $ 7 + (-2) - 6 = $
       + $ (-10) + 14 - (-4) = $
       + $ 15 - 9 + 3 = $
       + $ (-6) + 8 - 11 = $
