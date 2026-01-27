@@ -6,12 +6,12 @@
 
 #grid(
   columns: 2,
-  gutter: 5.5cm,
+  gutter: 1fr,
   
   [
-    #include "7-11-cela-cisla-scitani-odcitani.typ"
+    #include "7-11-cela-cisla-scitani-odcitani-PP.typ"
   ],
   [
-    #include "7-11-cela-cisla-scitani-odcitani.typ"
+    #include "7-11-cela-cisla-scitani-odcitani-PP-B.typ"
   ]
 )
