@@ -1,17 +1,17 @@
-#set page(width: 29.7cm, height: 21cm, margin: 1cm)
+#set page(width: 29.7cm, height: 21cm, margin: 0.5cm)
 
 #set enum(spacing: 1.3em, numbering: "a)")
-#show enum: set text(size: 1.3em)
+#show enum: set text(size: 0.9em)
 
 
 #grid(
   columns: 2,
-  gutter: 1fr,
+  gutter: 1cm,
   
   [
-    #include "7-11-cela-cisla-scitani-odcitani-PP.typ"
+    #include "6-11-nejmensi-spolecny-nasobek-PL.typ"
   ],
   [
-    #include "7-11-cela-cisla-scitani-odcitani-PP-B.typ"
+    #include "6-11-nejmensi-spolecny-nasobek-PL.typ"
   ]
 )
