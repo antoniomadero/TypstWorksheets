@@ -8,14 +8,14 @@
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
 
 // --- MŘÍŽKA ---
-const int CELL = 3;
+const int CELL = 7;
 const int GAP  = 1;
 const int STEP = CELL + GAP;
 
-const int GRID_W = 32;
-const int GRID_H = 16;
+const int GRID_W = 16;
+const int GRID_H = 8;
 
-// --- HAD ---
+// --- HAD ---A
 const int MAX_LEN = 50;
 int snakeX[MAX_LEN];
 int snakeY[MAX_LEN];
@@ -43,27 +43,7 @@ const unsigned long MOVE_INTERVAL = 500;
 bool gameOver = false;
 unsigned long gameOverTime = 0;
 
-void setup() {
-  display.begin(SSD1306_SWITCHCAPVCC, 0x3C);
 
-  pinMode(BTN_UP,    INPUT_PULLUP);
-  pinMode(BTN_DOWN,  INPUT_PULLUP);
-  pinMode(BTN_LEFT,  INPUT_PULLUP);
-  pinMode(BTN_RIGHT, INPUT_PULLUP);
-
-  randomSeed(analogRead(A0));
-  resetGame();
-}
-
-void loop() {
-  if (!gameOver) {
-    handleInput();
-    handleMovement();
-    drawGame();
-  } else {
-    showGameOver();
-  }
-}
 
 // --- OVLÁDÁNÍ ---
 void handleInput() {
@@ -71,6 +51,12 @@ void handleInput() {
   if (digitalRead(BTN_DOWN) == LOW)  dir = DOWN;
   if (digitalRead(BTN_LEFT) == LOW)  dir = LEFT;
   if (digitalRead(BTN_RIGHT) == LOW) dir = RIGHT;
+}
+
+// --- JÍDLO ---
+void spawnFood() {
+  foodX = random(0, GRID_W);
+  foodY = random(0, GRID_H);
 }
 
 // --- POHYB HADA ---
@@ -107,11 +93,7 @@ void handleMovement() {
   }
 }
 
-// --- JÍDLO ---
-void spawnFood() {
-  foodX = random(0, GRID_W);
-  foodY = random(0, GRID_H);
-}
+
 
 // --- KRESLENÍ ---
 void drawGame() {
@@ -139,10 +121,21 @@ void drawGame() {
   display.display();
 }
 
+void resetGame() {
+  snakeLen = 1;
+  snakeX[0] = 0;
+  snakeY[0] = 0;
+  dir = RIGHT;
+  gameOver = false;
+  lastMove = millis();
+  spawnFood();
+}
+
 // --- GAME OVER ---
 void showGameOver() {
   display.clearDisplay();
   display.setTextSize(1);
+  display.setTextColor(SSD1306_WHITE);  // ← PŘIDEJ TENTO ŘÁDEK
   display.setCursor(10, 28);
   display.println("Narazil jsi do zdi");
   display.display();
@@ -152,13 +145,24 @@ void showGameOver() {
   }
 }
 
-// --- RESET ---
-void resetGame() {
-  snakeLen = 1;
-  snakeX[0] = 0;
-  snakeY[0] = 0;
-  dir = RIGHT;
-  gameOver = false;
-  lastMove = millis();
-  spawnFood();
+void setup() {
+  display.begin(SSD1306_SWITCHCAPVCC, 0x3C);
+
+  pinMode(BTN_UP,    INPUT_PULLUP);
+  pinMode(BTN_DOWN,  INPUT_PULLUP);
+  pinMode(BTN_LEFT,  INPUT_PULLUP);
+  pinMode(BTN_RIGHT, INPUT_PULLUP);
+
+  randomSeed(analogRead(A0));
+  resetGame();
+}
+
+void loop() {
+  if (!gameOver) {
+    handleInput();
+    handleMovement();
+    drawGame();
+  } else {
+    showGameOver();
+  }
 }
