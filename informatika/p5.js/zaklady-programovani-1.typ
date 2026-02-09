@@ -16,11 +16,11 @@ Cílem této brožury je vysvětlit _základní stavební kameny programování_
 
 == 1. Kód a komentáře
 
-=== Co je kód?
+*Co je kód?*
 
 Kód je zápis příkazů, které počítač vykonává _postupně shora dolů_.
 
-=== Komentáře
+*Komentáře*
 
 Komentáře slouží k vysvětlení kódu. Počítač je ignoruje, ale programátorovi pomáhají se v kódu vyznat.
 
