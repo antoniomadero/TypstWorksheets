@@ -1,8 +1,11 @@
-= Základy programování (Python)
-
-#set text(font: "Times New Roman", size: 11pt)
+#set text(font: "Times New Roman", size: 8.5pt)
 #set par(leading: 1.4em)
 #set heading(numbering: "1.")
+#set page(height: 21cm, width: 29.7cm, margin: 0.8cm)
+#columns(3)[
+= Základy programování (Python)
+
+
 
 ---
 
@@ -117,7 +120,7 @@ for i in range(1, 6):
 * Vypiš všechna sudá čísla do 20.
 
 ---
-
+#colbreak()
 == 5. Funkce
 
 === Co je funkce?
@@ -186,3 +189,4 @@ Základní prvky programování v Pythonu:
 * vstup a výstup
 
 Tyto prvky tvoří _základ každého programu_ – od jednoduchých skriptů až po hry a aplikace.
+]

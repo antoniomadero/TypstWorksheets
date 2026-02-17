@@ -45,7 +45,7 @@ Proměnná je _pojmenované místo v paměti_, do kterého ukládáme hodnoty.
 ```js
 let vek = 13;
 let jmeno = "Eva";
-let jeZiak = true;
+let jeZak = true;
 ```
 
 === Typy hodnot
