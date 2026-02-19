@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Generátor mapy</title>
+<style>
+  body {
+    background:#222;
+    text-align:center;
+    font-family:sans-serif;
+  }
+  canvas {
+    image-rendering: pixelated;
+    border:3px solid #111;
+    margin-top:10px;
+  }
+  button {
+    margin-top:15px;
+    padding:10px 20px;
+    font-size:16px;
+    cursor:pointer;
+  }
+</style>
+</head>
+<body>
+
+<h2>Bořek stavitel – generátor mapy</h2>
+<button onclick="generate()">Vygeneruj znovu</button>
+<button onclick="saveMap()">Uložit obrázek</button>
+<br>
+<canvas id="map" width="480" height="360"></canvas>
+
+<script>
+const canvas = document.getElementById("map");
+const ctx = canvas.getContext("2d");
+
+const TILE = 60;
+const COLS = canvas.width / TILE;
+const ROWS = canvas.height / TILE;
+
+
+
+let map = [];
+
+function createEmptyMap() {
+    for (let y = 0; y < ROWS; y++) {
+        map[y] = [];
+        for (let x = 0; x < COLS; x++) {
+            map[y][x] = 0; // voda
+        }
+    }
+}
+
+function generateIslands(count) {
+    for (let i = 0; i < count; i++) {
+        let cx = Math.floor(Math.random() * COLS);
+        let cy = Math.floor(Math.random() * ROWS);
+        let size = 2 + Math.floor(Math.random() * 3);
+
+        for (let y = -size; y <= size; y++) {
+            for (let x = -size; x <= size; x++) {
+                let nx = cx + x;
+                let ny = cy + y;
+
+                if (nx >= 0 && nx < COLS && ny >= 0 && ny < ROWS) {
+                    if (Math.random() > 0.3) {
+                        map[ny][nx] = 1; // tráva
+                    }
+                }
+            }
+        }
+    }
+}
+
+function isWater(x, y) {
+    if (x < 0 || x >= COLS || y < 0 || y >= ROWS) return true;
+    return map[y][x] === 0;
+}
+
+function drawGrass(x, y) {
+    let px = x * TILE;
+    let py = y * TILE;
+
+    ctx.fillStyle = "#3cb043";
+    ctx.fillRect(px, py, TILE, TILE);
+
+    // textura trávy
+    for (let i = 0; i < 40; i++) {
+        ctx.fillStyle = Math.random() > 0.5 ? "#2e8b2e" : "#55cc55";
+        ctx.fillRect(
+            px + Math.floor(Math.random() * TILE),
+            py + Math.floor(Math.random() * TILE),
+            2, 2
+        );
+    }
+
+    // pobřeží (tmavý okraj jen kde je voda)
+    ctx.fillStyle = "#2a7a2a";
+
+    if (isWater(x, y - 1)) ctx.fillRect(px, py, TILE, 4);                // nahoře
+    if (isWater(x, y + 1)) ctx.fillRect(px, py + TILE - 4, TILE, 4);     // dole
+    if (isWater(x - 1, y)) ctx.fillRect(px, py, 4, TILE);                // vlevo
+    if (isWater(x + 1, y)) ctx.fillRect(px + TILE - 4, py, 4, TILE);     // vpravo
+}
+
+function drawWater(x, y) {
+    let px = x * TILE;
+    let py = y * TILE;
+
+    ctx.fillStyle = "#1e90ff";
+    ctx.fillRect(px, py, TILE, TILE);
+
+    // textura vody
+    for (let i = 0; i < 30; i++) {
+        ctx.fillStyle = Math.random() > 0.5 ? "#63b8ff" : "#4aa3ff";
+        ctx.fillRect(
+            px + Math.floor(Math.random() * TILE),
+            py + Math.floor(Math.random() * TILE),
+            2, 2
+        );
+    }
+
+    // světlejší "pěna" tam kde sousedí tráva
+    ctx.fillStyle = "#bfefff";
+
+    if (!isWater(x, y - 1)) ctx.fillRect(px, py, TILE, 3);
+    if (!isWater(x, y + 1)) ctx.fillRect(px, py + TILE - 3, TILE, 3);
+    if (!isWater(x - 1, y)) ctx.fillRect(px, py, 3, TILE);
+    if (!isWater(x + 1, y)) ctx.fillRect(px + TILE - 3, py, 3, TILE);
+}
+
+function drawMap() {
+    for (let y = 0; y < ROWS; y++) {
+        for (let x = 0; x < COLS; x++) {
+            if (map[y][x] === 1) {
+                drawGrass(x, y);
+            } else {
+                drawWater(x, y);
+            }
+        }
+    }
+}
+
+function generate() {
+    createEmptyMap();
+    generateIslands(5);
+    drawMap();
+}
+
+generate();
+
+function saveMap() {
+    const link = document.createElement("a");
+    link.download = "borek_stavitel_mapa.png";
+    link.href = canvas.toDataURL("image/png");
+    link.click();
+}
+</script>
+
+</body>
+</html>
