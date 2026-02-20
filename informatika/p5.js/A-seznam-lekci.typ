@@ -8,3 +8,4 @@
 + Cykly - (for, while)
 + Barevné režimy
 + Funkce - (vlastní funkce, parametry, návratová hodnota)
++ Pokročilé tvary - (bezier, curve, vertex)?

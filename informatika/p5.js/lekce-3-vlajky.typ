@@ -6,74 +6,7 @@
 
 #align(center)[= p5.js - lekce 3 - vlajky]
 #columns(2)[
-  == 1. Úvod
-  V této lekci budeme používat nejzákladnější tvary a barvy k vytvoření jednoduchých vlajek států. Téměř všechny vlajky států mají jako základ obdélník v poměru 2:3, takže se zaměříme na tento výchozí tvar.
-  == 2. Plátno - velikost, poměr a barva
-  Většina vlajek má poměr 2:3, což znamená, že šířka je 1,5krát větší než výška. Pro naše plátno použijeme rozměry 600x400 pixelů, což odpovídá tomuto poměru.
-  ```js
-  function setup() {
-    createCanvas(600, 400);
-  }
-  ```
-  V p5.js existují proměnné `width` a `height`, které nám umožňují získat aktuální šířku a výšku plátna. To nám pomůže při umisťování tvarů na správná místa bez nutnosti tvrdě kódovat souřadnice.
 
-  *Barva pozadí* se nastavuje pomocí funkce `background()`, která přijímá hodnoty pro červenou, zelenou a modrou složku barvy (RGB). Například, pro nastavení bílého pozadí použijeme:
-  ```js
-  background(255, 255, 255);
-  ```
-  Příklady dalších barev:
-  - Červená: `background(255, 0, 0);`
-  - Žlutá: `background(255, 255, 0);`
-  - Světle zelená: `background(144, 238, 144);`
-  - Světle červená: `background(255, 182, 182);`
-  - Oranžová: `background(255, 165, 0);`
-  - Zelená: `background(0, 255, 0);`
-  - Modrá: `background(0, 0, 255);`
-
-
-
-  == 3. Tvary
-  Pro kreslení tvarů používáme různé funkce:
-  - `rect(x, y, width, height)` pro obdélníky
-  - `ellipse(x, y, width, height)` pro elipsy (kruhy)
-  - `line(x1, y1, x2, y2)` pro čáry
-  - `triangle(x1, y1, x2, y2, x3, y3)` pro trojúhelníky
-  - `quad(x1, y1, x2, y2, x3, y3, x4, y4)` pro čtyřúhelníky
-  #colbreak()
-  == 4. Začínáme s čárami
-  Nejjednodušší tvar, který můžeme nakreslit, je čára - úsečka `line()`
-
-  Ta je určená 4 parametry: `line(x1, y1, x2, y2)`, kde `(x1, y1)` jsou souřadnice začátku úsečky a `(x2, y2)` jsou souřadnice konce úsečky.
-
-  Například, pro nakreslení úsečky z levého horního rohu do pravého dolního rohu plátna použijeme:
-  ```js
-  line(0, 0, width, height);
-  ```
-  Díky proměnným `width` a `height` bude tato úsečka *vždy* sahat od levého horního rohu k pravému dolnímu rohu, (bez ohledu na velikost plátna).
-
-  === Cvičení:
-  + Nakresli svislou úsečku rozdělující plátnona dvě poloviny.
-  + Nakresli úsečku z levého dolního rohu do pravého horního rohu plátna (úhlopříčka).
-  + Nakresli druhou úhlopříčku z levého horního rohu do pravého dolního rohu plátna.
-  + Nakresli kříž *uprostřed* plátna (dvě úsečky, které se protínají).
-
-  == 5. Barvy čar
-  Barvu čar nastavujeme pomocí funkce `stroke()`, která přijímá RGB hodnoty. Například, pro nastavení červené barvy čar použijeme:
-  ```js
-  stroke(255, 0, 0);
-  ```
-  Nastavit můžeme i šířku čar pomocí funkce `strokeWeight()`, která přijímá jeden parametr určující tloušťku čar v pixelech. Například, pro nastavení tloušťky čar na 5 pixelů použijeme:
-  ```js
-  strokeWeight(5);
-  ```
-  === Cvičení:
-  + Nastav barvu čar na modrou a nakresli kříž uprosted plátna.
-  + Nastav barvu čar na zelenou a nakresli úsečku z levého dolního rohu do pravého horního rohu plátna.
-  + Nastav barvu čar na oranžovou a nakresli úsečku z levého horního rohu do pravého dolního rohu plátna.
-]
-#pagebreak()
-#columns(2)[
-  == 6. Vlajky - level 1
   Nyní, když umíme kreslit čáry a nastavovat barvy, můžeme začít vytvářet jednoduché vlajky. Začneme s vlajkou Anglie, která se skládá z červeného kříže na bílém pozadí. Pro vytvoření této vlajky použijeme dvě úsečky, které se protínají uprostřed plátna.
 
   #align(center)[#image("images/Anglie.svg", width: 20%)]
@@ -87,7 +20,7 @@
 
   #align(center)[#image("images/Skotsko.svg", width: 20%)]
 
-  == 7. Vlajky - level 2
+
   Množštví vlajek se skládá ze 3 obdélníků, buď svisle nebo vodorovně. Například, vlajka Německa se skládá ze tří vodorovných pruhů: černého, červeného a zlatého. Pro vytvoření této vlajky použijeme tři obdélníky, které se navzájem nedotýkají, ale jsou umístěny nad sebou.
 
   `rect(x, y, width, height)` nám umožňuje nakreslit obdélník na plátně. Pro vytvoření tří vodorovných pruhů na vlajce Německa použijeme tři volání funkce `rect()`, kde každý obdélník bude mít stejnou výšku a bude umístěn nad sebou.
