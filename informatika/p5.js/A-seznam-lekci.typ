@@ -1,6 +1,6 @@
 = Seznam lekcí p5.js
 
-+ Úvod do p5.js - seznámení s prostředím, plátno (rozměry, barva pozadí), základní tvary
++ Úvod do p5.js - seznámení s prostředím, plátno (rozměry, barva pozadí)
 + Tvary a barvy
 + Kombinace tvarů a barev - vlajky
 + Animace - (proměnné, funkce draw, pohyb objektů, podmínky)
