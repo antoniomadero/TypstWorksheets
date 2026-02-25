@@ -18,14 +18,14 @@ V tomto pracovním listu si procvičíme řešení slovních úloh, které vyža
   Za jak dlouho se tyto dvě události opět sejdou?
 
 + Na zahradě je 42 růží a 56 tulipánů. \
-  Kolik největších stejných kytic lze vytvořit tak, aby každá měla stejný počet růží i tulipánů?
+  Kolik nejvíce stejných kytic lze vytvořit tak, aby každá měla stejný počet růží i tulipánů?
 
 + Jedna skupina turistů vyráží na trasu každých 8 dní, druhá každých 12 dní. \
   Za kolik dní vyrazí ve stejný den?
 
 + Máme 30 modrých a 45 červených balónků. \
   Chceme je rozdělit do stejných svazků bez zbytku. \
-  Kolik největších stejných svazků můžeme vytvořit?
+  Kolik nejvíce stejných svazků můžeme vytvořit?
 
 + Jedna fontána stříká vodu každých 20 sekund, druhá každých 30 sekund. \
   Za kolik sekund vystříknou vodu současně?
@@ -46,34 +46,34 @@ V tomto pracovním listu si procvičíme řešení slovních úloh, které vyža
 
 + Ve třídě je 32 chlapců a 40 dívek. \
   Chceme je rozdělit do stejných skupin tak, aby v každé skupině byl stejný počet chlapců i dívek. \
-  Kolik největších skupin lze vytvořit?
+  Kolik nejvíce skupin lze vytvořit?
 
 + Zvony na kostele odbíjejí každých 16 minut a každých 24 minut. \
   Za kolik minut zazní současně?
 
 + Na sportovní akci je 27 fotbalových a 36 basketbalových míčů. \
-  Kolik největších stejných sad lze vytvořit bez zbytku?
+  Kolik nejvíce stejných sad lze vytvořit bez zbytku?
 
 + Jedno světlo bliká každých 25 sekund, druhé každých 40 sekund. \
   Za kolik sekund zablikají současně?
 
 + Máme 54 bonbonů a 72 sušenek. \
   Chceme je rozdělit do stejných balíčků bez zbytku. \
-  Kolik největších balíčků lze vytvořit?
+  Kolik nejvíce balíčků lze vytvořit?
 
 + Autobus A jezdí každých 35 minut, autobus B každých 50 minut. \
   Za kolik minut pojedou současně?
 
 + Ve skladu je 63 kg mouky a 84 kg cukru. \
-  Chceme je rozdělit do stejně těžkých pytlů bez zbytku. \
-  Kolik největších pytlů lze vytvořit?
+  Chceme je rozdělit do co nejtěžších stejných pytlů bez zbytku. \
+  Kolik nejvícebude vážit jeden pytel?
 
 + Jedna hudební skladba trvá 6 minut, druhá 8 minut. \
   Za kolik minut skončí obě skladby současně, pokud začnou ve stejný okamžik?
 
 + Máme 45 sešitů a 60 učebnic. \
   Chceme je rozdělit do stejných sad bez zbytku. \
-  Kolik největších sad lze vytvořit?
+  Kolik nejvíce sad lze vytvořit?
 
 == Poznámky
 - Při řešení slovních úloh vždy identifikujte, zda potřebujete najít NSN (nejmenší společný násobek) nebo NSD (největší společný dělitel).

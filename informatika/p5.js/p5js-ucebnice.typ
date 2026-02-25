@@ -16,7 +16,7 @@
 #pagebreak()
 
 = Seznam lekcí p5.js
-
+\
 + Úvod do p5.js - seznámení s prostředím, plátno (rozměry, barva pozadí)
 + Tvary a barvy
 + Kombinace tvarů a barev - vlajky
@@ -30,22 +30,24 @@
 #pagebreak()
 
 #align(center)[= Lekce 0  - pracovní prostor]
+\
 
-P5js je knihovna pro kreativní programování, která umožňuje snadno vytvářet grafiku a interaktivní projekty pomocí JavaScriptu. Pracovat budeme v online editoru p5.js, který je dostupný na adrese *#link("https://editor.p5js.org")*. Tento editor nám umožní psát kód, spouštět ho a okamžitě vidět výsledky.
+#columns(2)[
+  P5js je knihovna pro kreativní programování, která umožňuje snadno vytvářet grafiku a interaktivní projekty pomocí JavaScriptu. Pracovat budeme v online editoru p5.js, který je dostupný na adrese *#link("https://editor.p5js.org")*. Tento editor nám umožní psát kód, spouštět ho a okamžitě vidět výsledky.
 
-Při spuštění editoru se nám zobrazí základní struktura kódu, která obsahuje dvě hlavní funkce: `setup()` a `draw()`. Funkce `setup()` se spustí *pouze jednou* na začátku a slouží k nastavení prostředí, zatímco funkce `draw()` se spouští *opakovaně* a slouží k vykreslování grafiky.
+  Při spuštění editoru se nám zobrazí základní struktura kódu, která obsahuje dvě hlavní funkce: `setup()` a `draw()`. Funkce `setup()` se spustí *pouze jednou* na začátku a slouží k nastavení prostředí, zatímco funkce `draw()` se spouští *opakovaně* a slouží k vykreslování grafiky.
 
-```js
-function setup() {
-  createCanvas(400, 300);
-}
+  ```js
+  function setup() {
+    createCanvas(400, 300);
+  }
 
-function draw() {
-  background(220);
-}
-```
-Základem je tedy pracovní prostor - plátno, které vytvoříme pomocí funkce `createCanvas()`. V tomto případě jsme vytvořili plátno o rozměrech 400x300 pixelů. Funkce `background()` nám umožňuje nastavit barvu pozadí, přičemž hodnota 220 představuje světle šedou barvu.
-
+  function draw() {
+    background(220);
+  }
+  ```
+  Základem je tedy pracovní prostor - plátno, které vytvoříme pomocí funkce `createCanvas()`. V tomto případě jsme vytvořili plátno o rozměrech 400x300 pixelů. Funkce `background()` nám umožňuje nastavit barvu pozadí, přičemž hodnota 220 představuje světle šedou barvu.
+]
 #pagebreak()
 
 
