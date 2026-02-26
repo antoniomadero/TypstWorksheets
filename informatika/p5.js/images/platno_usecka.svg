@@ -1,0 +1,28 @@
+<svg width="700" height="500"  xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="7" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="black" />
+    </marker>
+  </defs>
+
+  <rect x="50" y="50" width="600" height="400" fill="#f8f9fa" stroke="#ccc" />
+
+  <line x1="50" y1="50" x2="640" y2="50" stroke="black" stroke-width="4" marker-end="url(#arrowhead)" />
+    <text x="200" y="-270" font-family="Arial" font-size="20" fill="gray" transform="rotate(270, 350, 40)">height (y)</text>
+  <line x1="50" y1="50" x2="50" y2="440" stroke="black" stroke-width="4" marker-end="url(#arrowhead)" />
+  <text x="350" y="40" font-family="Arial" font-size="20" fill="gray">width (x)</text>
+    
+  <text x="30" y="45" font-family="Arial" font-size="18">[0, 0]</text>
+  <text x="590" y="470" font-family="Arial" font-size="18">[width, height]</text>
+
+  <line x1="50" y1="250" x2="650" y2="250" stroke="gray" stroke-width="1" stroke-dasharray="5,5" />
+  <text x="5" y="245" font-family="Arial" font-size="18" fill="gray">[0, height/2]</text>
+  <text x="600" y="245" font-family="Arial" font-size="18" fill="gray">[width, height/2]</text>
+
+  <line x1="250" y1="183.33" x2="450" y2="316.66" stroke="red" stroke-width="3" stroke-linecap="round" />
+  
+  <circle cx="250" cy="183.33" r="3" fill="red" />
+  <text x="205" y="175" font-family="Arial" font-size="18" fill="red">[width/3, height/3]</text>
+  <circle cx="450" cy="316.66" r="3" fill="red" />
+  <text x="405" y="330" font-family="Arial" font-size="18" fill="red">[2*width/3, 2*height/3]</text>
+</svg>
