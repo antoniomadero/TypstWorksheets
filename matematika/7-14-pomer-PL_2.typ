@@ -40,7 +40,7 @@
   + Zvětši číslo 36 v poměru 7:6
   + Zvětši číslo 18 v poměru 4:3
   + Zmenši číslo 40 v poměru 3:5
-  + Zmenši číslo 90 v poměru 4:7
+  + Zmenši číslo 90 v poměru 5:18
   + Zmenši číslo 72 v poměru 5:6
   + Zmenši číslo 120 v poměru 2:3
   + Zvětši číslo 25 v poměru 8:5
