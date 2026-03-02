@@ -1,3 +1,6 @@
+#show raw: set text(fill: blue)
+#let pozn(it) = text(fill: red, weight: "bold")[#upper(it)]
+
 = Stromy v lese - P5.js
 == Co budete potřebovat:
 #link("https://editor.p5js.org/") - online editor pro p5.js
@@ -24,15 +27,26 @@
 `function()` - pro vytvoření vlastní funkce
 
 == Kreslíme stromy
-Strom se skládá z kmene a koruny. Kmen nakreslíme pomocí funkce `rect()`, korunu nakreslíme pomocí funkce `triangle()`. Vytvoříme funkci `Strom(x, y, trunkWidth, trunkHeight, crownSize)`, která nám umožní nakreslit strom na zadané souřadnice `(x, y)` s danou šířkou a výškou kmene a velikostí koruny.
+Strom se skládá z kmene a koruny. Kmen nakreslíme pomocí funkce `rect()`, korunu nakreslíme pomocí funkce `triangle()`. Nejdříve tsi tedy ukážeme, jak funkce fungují a poté vytvoříme funkci `Strom()`, která nám umožní nakreslit strom jedním příkazem.
+
+#pozn("Zde doplnit obrázek Trojúhelníku a obdélníku se souřadnicemi")
+
+Funkce `Strom(x, y, v)`, nám umožní umístit strom na zadané souřadnice `(x, y)` s danou velikostí `v`.
+
 ```javascript
-function Strom(x, y) {
+function Strom(x, y, v) {
   // Kreslení kmene
-  fill("brown"); // Hnědá barva pro kmen
-  rect(x-10, y-20, 20, 40);
+  fill("brown");
+  rect(x - v/4, y-v/2, v/2, v);
   // Kreslení koruny
-  fill(34, 139, 34); // Zelená barva pro korunu
-  triangle(x - crownSize/2, y, x + crownSize/2, y, x, y - crownSize);
+  fill("green");
+  for (let i = 0; i < 4; i++) {
+     triangle(
+      x - v*2/3, y - v/2 - i*v/2,
+      x + v*2/3, y - v/2 - i*v/2,
+      x , y - 3/2*v - i*v/2
+    );
+  }
 }
 ```
 
