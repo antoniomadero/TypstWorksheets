@@ -20,3 +20,10 @@ flowchart TD
       C --> D[/Vypiš výsledek/]
       D --> E([Konec])
 ```
+
+```mermaid
+graph TD
+  A-- 5 -->B
+  B-- 3 -->C
+  A-- 10 -->C
+```
