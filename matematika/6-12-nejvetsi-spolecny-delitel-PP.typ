@@ -50,7 +50,7 @@
 
   #v(2fr)
 
-  + Kolem posezení chtěl také udělat ohrádku z dřevěných latěk. Měl k tomu dvě fošny dlouhé 148 a 104 dm. Kolik fošen může nařezat aby byly co nejdelší a přitom stejně dlouhé?
+  + Kolem posezení chtěl také udělat ohrádku z dřevěných latěk. Měl k tomu dvě fošny dlouhé 148 a 104 dm. Kolik latěk může nařezat, aby byly co nejdelší a přitom stejně dlouhé?
 
   #v(2fr)
 

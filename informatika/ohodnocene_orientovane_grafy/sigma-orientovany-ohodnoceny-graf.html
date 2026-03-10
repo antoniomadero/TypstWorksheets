@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Orientovaný ohodnocený graf (Sigma.js)</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      padding: 1rem;
+      background: #0b1f3a;
+      color: white;
+    }
+
+    main {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      padding: 1rem;
+    }
+
+    #sigma-container {
+      width: 100%;
+      height: 70vh;
+      border: 1px solid #888;
+      border-radius: 6px;
+      background: #f8f9fb;
+    }
+
+    .info {
+      padding: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background: #fff;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    pre {
+      background: rgba(27, 31, 35, 0.05);
+      padding: 0.75rem;
+      border-radius: 6px;
+      overflow: auto;
+      max-width: 100%;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    code {
+      background: rgba(27, 31, 35, 0.05);
+      padding: 0.15rem 0.3rem;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Orientovaný ohodnocený graf (Sigma.js)</h1>
+    <p>Ukázka orientovaného ohodnoceného grafu vykresleného pomocí Sigma.js + Graphology.</p>
+  </header>
+
+  <main>
+    <section class="info">
+      <h2>Co je to graf?</h2>
+      <p>
+        Graf se skládá z <strong>vrcholů (uzlů)</strong> a <strong>hran</strong>. Orientovaný graf má hrany se směrem (např. A → B) a ohodnocený graf má hrany označené hodnotou (např. cena, vzdálenost, platnost).
+      </p>
+
+      <h2>Jak to funguje v Sigma.js</h2>
+      <ul>
+        <li>Graf data spravuje <code>graphology</code> (uzly, hrany, jejich atributy).</li>
+        <li>Sigma vykreslí graf v elementu <code>&lt;div&gt;</code> a může použít souřadnice <code>x/y</code>.</li>
+        <li>Směr hran se zobrazí pomocí šipek (<code>type: 'arrow'</code>).</li>
+      </ul>
+
+      <h2>Příklad</h2>
+      <p>Graf obsahuje 5 uzlů a 6 orientovaných hran s váhami.</p>
+
+      <pre><code>const graph = new graphology.Graph();
+
+graph.addNode('A', { label: 'A', x: 0, y: 0, size: 10 });
+graph.addNode('B', { label: 'B', x: 1, y: 1, size: 10 });
+
+graph.addEdgeWithKey('A_B', 'A', 'B', {
+  label: '4',
+  type: 'arrow',
+  size: 1.5,
+});
+
+const renderer = new sigma.Sigma(graph, document.getElementById('sigma-container'));
+</code></pre>
+
+      <p>Otevři tento soubor v prohlížeči (dvakrát klikni nebo <strong>Ctrl+O</strong> a vyber soubor).</p>
+    </section>
+
+    <div id="sigma-container"></div>
+  </main>
+
+  <!-- Sigma.js + Graphology (UMD builds for browser) -->
+  <script src="https://cdn.jsdelivr.net/npm/graphology@0.21.1/dist/graphology.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sigma@2.4.0/build/sigma.min.js"></script>
+  <script>
+    const graph = new graphology.Graph();
+
+    graph.addNode('A', { label: 'A', x: 0, y: 0, size: 10, color: '#1f77b4' });
+    graph.addNode('B', { label: 'B', x: 1, y: 0.5, size: 10, color: '#1f77b4' });
+    graph.addNode('C', { label: 'C', x: 1, y: -0.5, size: 10, color: '#1f77b4' });
+    graph.addNode('D', { label: 'D', x: 2, y: 0.5, size: 10, color: '#1f77b4' });
+    graph.addNode('E', { label: 'E', x: 3, y: 0, size: 10, color: '#1f77b4' });
+
+    graph.addEdgeWithKey('A_B', 'A', 'B', {
+      label: '4',
+      type: 'arrow',
+      size: 1.5,
+      color: '#888',
+    });
+    graph.addEdgeWithKey('A_C', 'A', 'C', {
+      label: '2',
+      type: 'arrow',
+      size: 1.5,
+      color: '#888',
+    });
+    graph.addEdgeWithKey('B_D', 'B', 'D', {
+      label: '5',
+      type: 'arrow',
+      size: 1.5,
+      color: '#888',
+    });
+    graph.addEdgeWithKey('C_D', 'C', 'D', {
+      label: '1',
+      type: 'arrow',
+      size: 1.5,
+      color: '#888',
+    });
+    graph.addEdgeWithKey('D_E', 'D', 'E', {
+      label: '3',
+      type: 'arrow',
+      size: 1.5,
+      color: '#888',
+    });
+    graph.addEdgeWithKey('C_B', 'C', 'B', {
+      label: '1',
+      type: 'arrow',
+      size: 1.5,
+      color: '#888',
+    });
+
+    const SigmaClass = window.Sigma || (window.sigma && window.sigma.Sigma) || window.sigma;
+    const renderer = new SigmaClass(graph, document.getElementById('sigma-container'), {
+      renderLabels: true,
+      defaultNodeType: 'circle',
+      defaultEdgeType: 'arrow',
+      labelDensity: 1.25,
+      edgeLabelSize: 'proportional',
+    });
+
+    renderer.on('clickNode', ({ node }) => {
+      const degree = graph.degree(node);
+      alert(`Uzlu ${node} patří ${degree} hrana/hran (příchozí i odchozí).`);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Orientovaný ohodnocený graf (vis.js)</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      padding: 1rem;
+      background: #0b1f3a;
+      color: white;
+    }
+
+    main {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      padding: 1rem;
+    }
+
+    #network {
+      width: 100%;
+      height: 70vh;
+      border: 1px solid #888;
+      border-radius: 6px;
+      background: #f8f9fb;
+    }
+
+    .info {
+      padding: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background: #fff;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    pre {
+      background: rgba(27, 31, 35, 0.05);
+      padding: 0.75rem;
+      border-radius: 6px;
+      overflow: auto;
+      max-width: 100%;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+
+    code {
+      background: rgba(27, 31, 35, 0.05);
+      padding: 0.15rem 0.3rem;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Orientovaný ohodnocený graf (vis.js)</h1>
+    <p>Ukázka jednoduchého orientovaného, ohodnoceného grafu a jeho vykreslení pomocí knihovny vis.js.</p>
+  </header>
+
+  <main>
+    <section class="info">
+      <h2>Co je to graf?</h2>
+      <p>
+        Graf je soubor <strong>vrcholů (uzlů)</strong> a <strong>hran</strong>. Orientovaný graf má hrany, které mají směr (např. A → B), a ohodnocený graf má hrany označené hodnotou (např. cena, vzdálenost, platnost).
+      </p>
+
+      <h2>Jak to funguje v vis.js</h2>
+      <ul>
+        <li><code>nodes</code> jsou objekty s <code>id</code> a <code>label</code>.</li>
+        <li><code>edges</code> jsou objekty s <code>from</code>, <code>to</code> a <code>label</code> pro ohodnocení.</li>
+        <li>Směřování se zobrazí pomocí <code>arrows: 'to'</code>.</li>
+      </ul>
+
+      <h2>Příklad</h2>
+      <p>Graf obsahuje 5 uzlů a 6 orientovaných hran. Každá hrana má svoji váhu.</p>
+
+      <pre><code>const nodes = new vis.DataSet([
+  { id: 'A', label: 'A' },
+  { id: 'B', label: 'B' },
+  { id: 'C', label: 'C' },
+  { id: 'D', label: 'D' },
+  { id: 'E', label: 'E' },
+]);
+
+const edges = new vis.DataSet([
+  { from: 'A', to: 'B', label: '4' },
+  { from: 'A', to: 'C', label: '2' },
+  { from: 'B', to: 'D', label: '5' },
+  { from: 'C', to: 'D', label: '1' },
+  { from: 'D', to: 'E', label: '3' },
+  { from: 'C', to: 'B', label: '1' },
+]);
+</code></pre>
+
+      <p>Otevři tento soubor v prohlížeči (dvakrát klikni nebo <strong>Ctrl+O</strong> a vyber soubor).</p>
+    </section>
+
+    <div id="network"></div>
+  </main>
+
+  <!-- vis.js CDN -->
+  <script type="text/javascript" src="https://unpkg.com/vis-network@9.1.0/dist/vis-network.min.js"></script>
+  <script>
+    const nodes = new vis.DataSet([
+      { id: 'A', label: 'A' },
+      { id: 'B', label: 'B' },
+      { id: 'C', label: 'C' },
+      { id: 'D', label: 'D' },
+      { id: 'E', label: 'E' },
+    ]);
+
+    const edges = new vis.DataSet([
+      { from: 'A', to: 'B', label: '4', arrows: 'to' },
+      { from: 'A', to: 'C', label: '2', arrows: 'to' },
+      { from: 'B', to: 'D', label: '5', arrows: 'to' },
+      { from: 'C', to: 'D', label: '1', arrows: 'to' },
+      { from: 'D', to: 'E', label: '3', arrows: 'to' },
+      { from: 'C', to: 'B', label: '1', arrows: 'to' },
+    ]);
+
+    const data = {
+      nodes: nodes,
+      edges: edges,
+    };
+
+    const options = {
+      nodes: {
+        shape: 'circle',
+        size: 26,
+        font: { color: '#ffffff', size: 14 },
+        color: { background: '#1f77b4', border: '#0f4a7a' },
+      },
+      edges: {
+        arrows: {
+          to: { enabled: true, scaleFactor: 0.8 },
+        },
+        font: { align: 'middle', color: '#222', size: 12 },
+        color: { color: '#888' },
+        smooth: { enabled: true, type: 'curvedCW' },
+      },
+      physics: {
+        enabled: true,
+        stabilization: { iterations: 250 },
+      },
+      interaction: {
+        hover: true,
+        navigationButtons: true,
+        tooltipDelay: 200,
+      },
+    };
+
+    const container = document.getElementById('network');
+    const network = new vis.Network(container, data, options);
+
+    network.on('click', (params) => {
+      if (params.nodes.length > 0) {
+        const nodeId = params.nodes[0];
+        const connected = network.getConnectedEdges(nodeId);
+        alert(`Uzlu ${nodeId} patří ${connected.length} hrana/hran (včetně příchozích i odchozích).`);
+      }
+    });
+  </script>
+</body>
+</html>

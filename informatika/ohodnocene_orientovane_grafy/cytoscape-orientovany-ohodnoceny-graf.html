@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Orientovaný ohodnocený graf (Cytoscape.js)</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      padding: 1rem;
+      background: #0b1f3a;
+      color: white;
+    }
+
+    main {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      padding: 1rem;
+    }
+
+    #cy {
+      width: 100%;
+      height: 70vh;
+      border: 1px solid #888;
+      border-radius: 6px;
+      background: #f8f9fb;
+    }
+
+    .info,
+    .code {
+      padding: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background: #fff;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    code {
+      background: rgba(27, 31, 35, 0.05);
+      padding: 0.15rem 0.3rem;
+      border-radius: 4px;
+    }
+
+    pre {
+      background: rgba(27, 31, 35, 0.05);
+      padding: 0.75rem;
+      border-radius: 6px;
+      overflow: auto;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Orientovaný ohodnocený graf (Cytoscape.js)</h1>
+    <p>Ukázka jednoduchého orientovaného, ohodnoceného grafu a jeho vykreslení pomocí Cytoscape.js.</p>
+  </header>
+
+  <main>
+    <section class="info">
+      <h2>Co je to graf?</h2>
+      <p>
+        Graf se skládá z <strong>vrcholů (uzlů)</strong> a <strong>hran</strong>. Pokud jsou hrany <strong>orientované</strong>, mají směr (např. A → B). Pokud jsou <strong>ohodnocené</strong>, každá hrana má hodnotu (např. cena, vzdálenost, platnost).
+      </p>
+
+      <h2>Jak to funguje v Cytoscape.js</h2>
+      <ul>
+        <li><code>nodes</code> jsou objekty s <code>data: { id: ... }</code>.</li>
+        <li><code>edges</code> jsou objekty s <code>data: { source: ..., target: ..., weight: ... }</code>.</li>
+        <li>Směrování zajistí <code>curve-style</code> a <code>target-arrow-shape</code>.</li>
+      </ul>
+
+      <h2>Příklad</h2>
+      <p>Graf obsahuje 5 vrcholů a 6 orientovaných hran. Každá hrana nese ohodnocení (číslo).</p>
+
+      <pre><code>cy.add({
+  group: 'edges',
+  data: { id: 'a_b', source: 'A', target: 'B', weight: 5 }
+});</code></pre>
+
+      <p>Otevři tento soubor v prohlížeči (dvakrát klikni na soubor nebo <strong>Ctrl+O</strong> a vyber soubor)</p>
+    </section>
+
+    <div id="cy"></div>
+  </main>
+
+  <!-- Cytoscape.js CDN -->
+  <script src="https://unpkg.com/cytoscape@3.23.0/dist/cytoscape.min.js"></script>
+  <script>
+    const cy = cytoscape({
+      container: document.getElementById('cy'),
+
+      boxSelectionEnabled: false,
+      autounselectify: true,
+
+      style: [
+        {
+          selector: 'node',
+          style: {
+            'label': 'data(id)',
+            'text-valign': 'center',
+            'color': '#fff',
+            'text-outline-width': 3,
+            'text-outline-color': '#2f4f6f',
+            'background-color': '#1f77b4',
+            'width': 40,
+            'height': 40,
+          },
+        },
+        {
+          selector: 'edge',
+          style: {
+            'curve-style': 'bezier',
+            'target-arrow-shape': 'triangle',
+            'arrow-scale': 1.2,
+            'width': 3,
+            'line-color': '#888',
+            'target-arrow-color': '#888',
+            'label': 'data(weight)',
+            'font-size': 12,
+            'text-rotation': 'autorotate',
+            'text-margin-x': 0,
+            'text-margin-y': -6,
+          },
+        },
+      ],
+
+      elements: {
+        nodes: [
+          { data: { id: 'A' } },
+          { data: { id: 'B' } },
+          { data: { id: 'C' } },
+          { data: { id: 'D' } },
+          { data: { id: 'E' } },
+        ],
+        edges: [
+          { data: { id: 'A_B', source: 'A', target: 'B', weight: 4 } },
+          { data: { id: 'A_C', source: 'A', target: 'C', weight: 2 } },
+          { data: { id: 'B_D', source: 'B', target: 'D', weight: 5 } },
+          { data: { id: 'C_D', source: 'C', target: 'D', weight: 1 } },
+          { data: { id: 'D_E', source: 'D', target: 'E', weight: 3 } },
+          { data: { id: 'C_B', source: 'C', target: 'B', weight: 1 } },
+        ],
+      },
+
+      layout: {
+        name: 'cose',
+        idealEdgeLength: 120,
+        nodeOverlap: 20,
+        animate: true,
+      },
+    });
+
+    // Pomocná funkce pro rychlé přidání hran
+    function addEdge(source, target, weight) {
+      cy.add({
+        group: 'edges',
+        data: {
+          id: `${source}_${target}`,
+          source,
+          target,
+          weight,
+        },
+      });
+    }
+
+    // Přidání interaktivního popisku po kliknutí
+    cy.on('tap', 'node', (evt) => {
+      const node = evt.target;
+      alert(`Uzlu ${node.id()} patří: váha výstupních hran = ${node.outgoers('edge').length}`);
+    });
+  </script>
+</body>
+</html>
