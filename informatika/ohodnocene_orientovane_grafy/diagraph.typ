@@ -3,9 +3,10 @@
 #render(
   "
   digraph G {
-    rankdir=LR;
-    node [shape=circle, width=0.7, fixedsize=true];
-    A -> B [label=5,curvelines=true];
+    rankdir=TD;
+    layout=dot;
+    node [shape=circle];
+    A -> B [color=red, penwidth=2, label=5,curvelines=true];
     B -> A [label=\"10\"];
     C -> A [dir=both, label=\"5\", curvelines=true];
     A -> D [label=\"6\", curvelines=true]
