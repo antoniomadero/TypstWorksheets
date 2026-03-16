@@ -1,7 +1,9 @@
+#import "funkce.typ": trojclenka
 = Trojčlenka
 - Postup, kterým snadno řešíme slovní úlohy a problémy, kde známe tři údaje, které spolu souvisí (tvoří úměru) a čtvrtý máme vypočítat
 - Důležitým krokem je určení jejich vztahu čili zda se jedná o přímou, či nepřímou úměru
 - První krokem je sestavit správně zápis (určit závislé a nezávislé proměnné)
+
 
 + 12 zedníků postaví zeď za 96 hodin. Za kolik hodin postaví 18 zedníků tutéž zeď?
 12 zedníků	96 hodin
@@ -29,55 +31,4 @@
 4 : 3 = 8 : x
 3·84 = 6 dní
 
-
-#table(
-  columns: (auto, auto, auto),
-  stroke: none,
-  // Skryje čáry tabulky
-  gutter: 10pt,
-  // Mezera mezi sloupci
-
-  $arrow.t$, [10 kg brambor], [150 Kč],
-  $arrow.t$, [25 kg brambor], [$x$ Kč],
-)
-
-$ 10 / 25 = 150 / x $
-
-#table(
-  columns: (20pt, auto, auto),
-  stroke: none,
-  align: center + horizon,
-
-  // Šipka přes dva řádky v prvním sloupci
-  table.cell(rowspan: 2)[#scale(x: 100%, y: 200%)[$arrow.t$]],
-  [5 m],
-  [100 Kč],
-  table.cell(rowspan: 2)[#scale(x: 100%, y: 200%)[$arrow.b$]],
-  [8 m], [$x$ Kč],
-)
-
-
-#table(
-  columns: (20pt, auto, 40pt, auto, 20pt),
-  // Šipka, Text, Mezera, Text, Šipka
-  stroke: none,
-  // Žádné mřížky
-  align: (center + horizon, left, center, left, center + horizon),
-  gutter: 5pt,
-
-  // PRVNÍ ŘÁDEK
-  // Levá šipka přes 2 řádky
-  table.cell(rowspan: 2)[#move(dy: 2pt)[#scale(x: 150%, y: 250%)[$arrow.t$]]],
-  [$x_1$],
-  [......],
-  [$y_1$],
-  // Pravá šipka přes 2 řádky
-  table.cell(rowspan: 2)[#move(dy: 2pt)[#scale(x: 150%, y: 250%)[$arrow.t$]]],
-
-  // DRUHÝ ŘÁDEK
-  [$x_2$],
-  [......],
-  // Podtržený výsledek (y2)
-  [$y_2$],
-)
 
