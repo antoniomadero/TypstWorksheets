@@ -1,17 +1,52 @@
+#import "funkce.typ": trojclenka
+
+#set page(margin: 2cm)
+#show heading.where(): it => block(
+  below: 1.3em,
+  above: 1.8em,
+  it,
+)
+#show heading.where(level: 1): set text(size: 22pt)
+
+#let ramecek(obsah) = block(
+  width: 100%, // Šířka přes celý list
+  fill: rgb("#ddf3fd"), // Velmi světle modrá výplň
+  stroke: (left: 4pt + blue),
+  radius: 8pt, // Kulaté rohy
+  inset: 1.5em, // Mezera mezi textem a okrajem rámečku
+  [
+    #set text(size: 11pt, fill: rgb("#004080")) // Nastavení textu uvnitř
+    #set list(spacing: 1.5em)             // Hezčí odsazení odrážek
+    #obsah
+  ],
+)
+
 = Trojčlenka
 
-- Způsob zápisu a řešení příkladů (slovních úloh), kde známe tři údaje a čtvrtý máme vypočítat
-- důležitým krokem je určení vztahu mezi těmito údaji (přímá nebo nepřímá úměra) a sestavení správného zápisu (určení závislých a nezávislých proměnných)
+#ramecek([
+  - Způsob zápisu a řešení příkladů (slovních úloh), kde známe tři údaje a čtvrtý máme vypočítat
+  - důležitým krokem je určení vztahu mezi těmito údaji (přímá nebo nepřímá úměra) a sestavení správného zápisu (určení závislých a nezávislých proměnných)
+  - Výpočet nám vede k sestavení úměry (dvou poměrů, které se rovnají)
+])
 
-- Výpočet nám vede k sestavení úměry (dvou poměrů, které se rovnají)
+== Vzor
 
+*_Jestliže za 24 minut ujedeme 6 km, kolik km ujedeme za 30 min?_*
+
+*Známe:* 24 min, 6 km, 30 min
+
+*Neznáme:* x km
+
+*Zápis:* #trojclenka("24 min", "6 km", "30 min", "x km")
+
+*Sestavíme úměru:* 24 min : 6 km = 30 min : x km
+
+*Vypočítáme:* x = (30 min $dot$ 6 km) / 24 min = 7,5 km
+
+*Odpověď:* Za 30 minut ujedeme 7,5 km.
 
 == Příklady:
-+ Jestliže za 24 minut ujedeme 6 km, kolik km ujedeme za 30 min?
-  Známe: 24 min, 6 km, 30 min
-  Neznáme: x km
-  Sestavíme úměru: 24 min : 6 km = 30 min : x km
-  Vypočítáme: x = (30 min $dot$ 6 km) / 24 min = 7,5 km
+
 + Na ujetí 60 km autem potřebujeme 48 min kolik min potřebujeme na ujetí 80 km při stejné rychlosti?
 
 + 6 zedníků by pracovalo na stavbě 16 dní. Kolik dní by pracovalo stejným tempem 8 zedníků?

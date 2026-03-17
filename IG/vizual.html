@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Codestein – homepage demo</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
+
+        :root {
+            --neon: #39ff9f;
+            --neon-dark: #0aff7a;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+
+        body {
+            /* === HLAVNÍ POZADÍ – 3 varianty podle potřeby === */
+
+            /* Varianta 1 – nejjemnější, čistě tmavá (doporučuju nejvíc) */
+            background: linear-gradient(180deg, #0a0a0a 0%, #121212 100%);
+
+            /* Varianta 2 – s lehkým zeleným nádechem (ládí přímo s logem) */
+            /* background: linear-gradient(135deg, #0a0f0a 0%, #121212 40%, #0f0f0f 100%); */
+
+            /* Varianta 3 – radial + subtilní glow uprostřed (logo pak vypadá jako by „svítilo“) */
+            /* background: 
+                radial-gradient(circle at 50% 35%, rgba(57, 255, 159, 0.07) 0%, transparent 65%),
+                linear-gradient(180deg, #0a0a0a 0%, #121212 100%); */
+            
+            background-attachment: fixed;
+            color: #e0e0e0;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo-container {
+            text-align: center;
+            z-index: 2;
+            padding: 40px 20px;
+            max-width: 720px;
+        }
+
+        .logo-container img {
+            width: 100%;
+            border-radius: 25px;
+            max-width: 250px;
+            filter: drop-shadow(0 0 40px rgba(57, 255, 159, 0.35));
+        }
+
+        h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 600;
+            margin: 24px 0 0;
+
+            /* Gradient text – plná kompatibilita */
+            background: linear-gradient(90deg, #fff, var(--neon));
+            -webkit-background-clip: text;
+            background-clip: text;
+            /* standardní vlastnost */
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+            /* fallback pro všechny prohlížeče */
+
+            text-shadow: 0 0 30px rgba(57, 255, 159, 0.3);
+        }
+
+        p {
+            font-size: 1.25rem;
+            max-width: 520px;
+            margin: 16px auto;
+            opacity: 0.85;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                radial-gradient(circle, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 60px 60px;
+            background-position: 0 0, 30px 30px;
+            pointer-events: none;
+            opacity: 0.4;
+            z-index: 1;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="hero">
+        <div class="logo-container">
+            <img src="logo_A.jpg" alt="Codestein logo" width="620" height="auto">
+
+            <h1>codestein</h1>
+            <p>Moderní coding &amp; tech studio</p>
+        </div>
+    </div>
+
+</body>
+
+</html>

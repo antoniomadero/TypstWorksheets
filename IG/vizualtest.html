@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Codestein – 4 gradienty pro posty</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Space+Grotesk:wght@500;600&amp;display=swap');
+
+        :root {
+            --neon: #39ff9f;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0a0a;
+            color: #e0e0e0;
+            font-family: 'Inter', system_ui, sans-serif;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.8rem;
+            text-align: center;
+            margin-bottom: 50px;
+            background: linear-gradient(90deg, #fff, var(--neon));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .preview {
+            aspect-ratio: 1 / 1;
+            border-radius: 24px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .preview:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 30px 60px rgba(57, 255, 159, 0.15);
+        }
+
+        .preview::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+        }
+
+        /* ==================== 1. UNIVERZÁLNÍ ==================== */
+        .preview1 {
+            background:
+                radial-gradient(circle at 50% 38%, rgba(57, 255, 159, 0.065) 0%, transparent 68%),
+                linear-gradient(178deg, #0a0a0a 0%, #121212 48%, #0f0f0f 100%);
+        }
+
+        /* ==================== 2. ULTRA TMAVÝ ==================== */
+        .preview2 {
+            background:
+                radial-gradient(circle at 50% 35%, rgba(57, 255, 159, 0.035) 0%, transparent 75%),
+                linear-gradient(180deg, #080808 0%, #111111 100%);
+        }
+
+        /* ==================== 3. ŠIKMÝ HLUBOKÝ ==================== */
+        .preview3 {
+            background:
+                radial-gradient(circle at 45% 40%, rgba(57, 255, 159, 0.055) 0%, transparent 65%),
+                linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+        }
+
+        /* ==================== 4. NEON ZESPODU ==================== */
+        .preview4 {
+            background:
+                radial-gradient(circle at 50% 82%, rgba(57, 255, 159, 0.085) 0%, transparent 62%),
+                linear-gradient(180deg, #111111 0%, #0a0a0a 100%);
+        }
+
+        .content {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .content img {
+            width: 100%;
+            max-width: 180px;
+            filter: drop-shadow(0 0 30px rgba(57, 255, 159, 0.45));
+            margin-bottom: 24px;
+        }
+
+        .content h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.85rem;
+            margin-bottom: 8px;
+            color: white;
+        }
+
+        .content p {
+            font-size: 1.05rem;
+            opacity: 0.85;
+            max-width: 260px;
+        }
+
+        .label {
+            position: absolute;
+            top: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(10, 10, 10, 0.75);
+            color: var(--neon);
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 6px 18px;
+            border-radius: 9999px;
+            letter-spacing: 0.5px;
+            z-index: 3;
+            backdrop-filter: blur(8px);
+        }
+
+        .css-code {
+            margin-top: 12px;
+            font-family: monospace;
+            font-size: 0.78rem;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 12px 16px;
+            border-radius: 12px;
+            color: #aaa;
+            text-align: left;
+            white-space: pre-wrap;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>4 gradienty pro tvé posty</h1>
+
+        <div class="grid">
+
+            <!-- 1 -->
+            <div class="preview preview1">
+                <div class="label">1 • UNIVERZÁLNÍ</div>
+                <div class="content">
+                    <img src="logo_A.jpg" alt="Codestein">
+                    <h3>codestein</h3>
+                    <p>Moderní coding &amp; tech studio</p>
+                </div>
+            </div>
+
+            <!-- 2 -->
+            <div class="preview preview2">
+                <div class="label">2 • ULTRA TMAVÝ</div>
+                <div class="content">
+                    <img src="logo_A.jpg" alt="Codestein">
+                    <h3>codestein</h3>
+                    <p>Moderní coding &amp; tech studio</p>
+                </div>
+            </div>
+
+            <!-- 3 -->
+            <div class="preview preview3">
+                <div class="label">3 • ŠIKMÝ HLUBOKÝ</div>
+                <div class="content">
+                    <img src="logo_A.jpg" alt="Codestein">
+                    <h3>codestein</h3>
+                    <p>Moderní coding &amp; tech studio</p>
+                </div>
+            </div>
+
+            <!-- 4 -->
+            <div class="preview preview4">
+                <div class="label">4 • NEON ZESPODU</div>
+                <div class="content">
+                    <img src="logo_A.jpg" alt="Codestein">
+                    <h3>codestein</h3>
+                    <p>Moderní coding &amp; tech studio</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- CSS kódy pro rychlé kopírování -->
+        <div style="margin-top: 70px; text-align: center;">
+            <h2 style="margin-bottom: 30px; font-size: 1.6rem;">Hotové CSS kódy (stačí zkopírovat)</h2>
+            <div
+                style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1100px; margin: 0 auto;">
+
+                <div style="background:#111; padding:20px; border-radius:16px;">
+                    <strong style="color:#39ff9f;">1. Univerzální</strong><br>
+                    <code style="display:block; margin-top:12px; font-size:0.85rem; color:#ccc;">
+background: 
+  radial-gradient(circle at 50% 38%, rgba(57, 255, 159, 0.065) 0%, transparent 68%),
+  linear-gradient(178deg, #0a0a0a 0%, #121212 48%, #0f0f0f 100%);
+                    </code>
+                </div>
+
+                <div style="background:#111; padding:20px; border-radius:16px;">
+                    <strong style="color:#39ff9f;">2. Ultra tmavý</strong><br>
+                    <code style="display:block; margin-top:12px; font-size:0.85rem; color:#ccc;">
+background: 
+  radial-gradient(circle at 50% 35%, rgba(57, 255, 159, 0.035) 0%, transparent 75%),
+  linear-gradient(180deg, #080808 0%, #111111 100%);
+                    </code>
+                </div>
+
+                <div style="background:#111; padding:20px; border-radius:16px;">
+                    <strong style="color:#39ff9f;">3. Šikmý hluboký</strong><br>
+                    <code style="display:block; margin-top:12px; font-size:0.85rem; color:#ccc;">
+background: 
+  radial-gradient(circle at 45% 40%, rgba(57, 255, 159, 0.055) 0%, transparent 65%),
+  linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+                    </code>
+                </div>
+
+                <div style="background:#111; padding:20px; border-radius:16px;">
+                    <strong style="color:#39ff9f;">4. Neon zespodu</strong><br>
+                    <code style="display:block; margin-top:12px; font-size:0.85rem; color:#ccc;">
+background: 
+  radial-gradient(circle at 50% 82%, rgba(57, 255, 159, 0.085) 0%, transparent 62%),
+  linear-gradient(180deg, #111111 0%, #0a0a0a 100%);
+                    </code>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
