@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<title>Codestein – Gradient test</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+background:#0f1419;
+font-family:Inter, sans-serif;
+color:#e8e8e8;
+}
+
+.wrapper{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:30px;
+padding:40px;
+}
+
+.block{
+padding:40px;
+border-radius:14px;
+min-height:420px;
+position:relative;
+overflow:hidden;
+box-shadow:0 10px 30px rgba(0,0,0,0.6);
+}
+
+h1{
+font-family:Orbitron, sans-serif;
+color:#7CFF6B;
+margin-top:0;
+font-size:28px;
+}
+
+p{
+line-height:1.6;
+opacity:0.9;
+}
+
+ul{
+margin-top:20px;
+padding-left:18px;
+}
+
+li{
+margin-bottom:8px;
+}
+
+.block::after{
+content:"";
+position:absolute;
+inset:0;
+background:linear-gradient(transparent, rgba(0,0,0,0.5));
+pointer-events:none;
+}
+
+.gradient1{
+background:
+radial-gradient(circle at 25% 20%, rgba(124,255,107,0.25), transparent 40%),
+linear-gradient(135deg,#0F1419,#1E242B,#2B323A);
+}
+
+.gradient2{
+background:
+linear-gradient(160deg,#111417,#1A1F24,#273038);
+}
+
+.gradient3{
+background:
+linear-gradient(140deg,#0E1114,#182026,#1F3D2E);
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="wrapper">
+
+<div class="block gradient1">
+<h1>Primary Tech Gradient</h1>
+
+<p>
+Tento gradient je vhodný jako hlavní vizuální styl značky.
+Používá tmavý základ a jemný zelený glow, který připomíná
+světlo elektronických komponent.
+</p>
+
+<ul>
+<li>Perfektní pro homepage hero</li>
+<li>Dobře funguje s logem Codestein</li>
+<li>Vysoký kontrast pro text</li>
+</ul>
+
+</div>
+
+
+<div class="block gradient2">
+<h1>Circuit Style</h1>
+
+<p>
+Minimalistický technologický gradient inspirovaný
+PCB deskami a hardwarem. Hodí se pro obsahové sekce
+nebo pozadí článků.
+</p>
+
+<ul>
+<li>Střízlivý a profesionální</li>
+<li>Ideální pro blog nebo dokumentaci</li>
+<li>Dobře kombinuje více obsahových bloků</li>
+</ul>
+
+</div>
+
+
+<div class="block gradient3">
+<h1>Social Gradient</h1>
+
+<p>
+Výraznější gradient pro sociální sítě. Přidává lehký
+zelený tón, který může pomoci vytvořit vizuálně
+výraznější posty nebo carousel.
+</p>
+
+<ul>
+<li>Vhodné pro Instagram posty</li>
+<li>Více energie a barev</li>
+<li>Stále drží tech charakter</li>
+</ul>
+
+</div>
+
+
+</div>
+
+</body>
+</html>
