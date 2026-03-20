@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Codestein — Brand Vizuály</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Exo+2:wght@300;400;700;900&display=swap"
+    rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <link rel="stylesheet" href="smaragr_IG.css">
+</head>
+
+<body>
+
+  <!-- ── Tlačítko mimo .smaragd ── -->
+  <button class="save-btn" id="saveBtn" onclick="saveAsPng()">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+      stroke-linejoin="round">
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+      <polyline points="7 10 12 15 17 10" />
+      <line x1="12" y1="15" x2="12" y2="3" />
+    </svg>
+    Uložit jako PNG
+  </button>
+
+  <!-- ── VARIANTA 4 ── -->
+  <div class="smaragd" id="smaragd">
+    <div class="thick-bar"></div>
+    <div class="geo geo1"></div>
+    <div class="geo geo2"></div>
+    <div class="geo geo3"></div>
+    <h2>#3 Scratch</h2>
+    <br><br><br>
+    <div class="content v1">
+      <p>- nepíšete žádný kód</p>
+      <p>- skládáte vizuální bloky </p>
+      <p>- dobré na naučení základů</p>
+    </div>
+  </div>
+
+  <script>
+    async function saveAsPng() {
+      const btn = document.getElementById('saveBtn');
+      const el = document.getElementById('smaragd');
+
+      btn.disabled = true;
+      btn.textContent = 'Generuji…';
+
+      try {
+        const canvas = await html2canvas(el, {
+          scale: 1,          // 1:1 — element je už 1080×1080 px
+          useCORS: true,
+          backgroundColor: null,
+          logging: false
+        });
+
+        const link = document.createElement('a');
+        link.download = 'smaragd_instagram.png';
+        link.href = canvas.toDataURL('image/png');
+        link.click();
+      } catch (err) {
+        alert('Chyba při generování obrázku: ' + err.message);
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = `
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                        <polyline points="7 10 12 15 17 10"/>
+                        <line x1="12" y1="15" x2="12" y2="3"/>
+                    </svg>
+                    Uložit jako PNG`;
+      }
+    }
+  </script>
+
+</body>
+
+</html>

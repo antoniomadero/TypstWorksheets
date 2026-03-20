@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Codestein — IG Post Generator</title>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Exo+2:wght@300;400;700;900&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+  :root {
+    --green: #6eff3a;
+    --green-dim: rgba(110,255,58,0.15);
+    --green-glow: rgba(110,255,58,0.4);
+    --panel: #161c16;
+    --panel2: #1a211a;
+    --border: rgba(110,255,58,0.12);
+    --text: #c8e8c0;
+    --text-dim: #5a7a52;
+    --font-mono: 'Share Tech Mono', monospace;
+    --font-display: 'Exo 2', sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--font-mono);
+    background: #0d120d;
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── Header ── */
+  header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 28px;
+    border-bottom: 1px solid var(--border);
+    background: var(--panel);
+  }
+
+  header .logo {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-size: 20px;
+    color: var(--green);
+    letter-spacing: -0.5px;
+    text-shadow: 0 0 20px var(--green-glow);
+  }
+
+  header .subtitle {
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  header .badge {
+    margin-left: auto;
+    font-size: 10px;
+    padding: 4px 10px;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    color: var(--text-dim);
+    letter-spacing: 2px;
+  }
+
+  /* ── Layout ── */
+  .workspace {
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    flex: 1;
+    min-height: 0;
+  }
+
+  /* ── Left panel ── */
+  .left {
+    background: var(--panel);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+  }
+
+  .section-label {
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    padding: 14px 20px 8px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* Template selector */
+  .templates {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 12px;
+  }
+
+  .tpl-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: 3px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all 0.15s;
+    margin-bottom: 4px;
+    background: transparent;
+    width: 100%;
+    text-align: left;
+    color: inherit;
+    font-family: inherit;
+  }
+
+  .tpl-card:hover { background: rgba(110,255,58,0.05); border-color: rgba(110,255,58,0.1); }
+  .tpl-card.active { background: rgba(110,255,58,0.08); border-color: rgba(110,255,58,0.3); }
+
+  .tpl-thumb {
+    width: 56px; height: 56px;
+    border-radius: 2px;
+    flex-shrink: 0;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .tpl-thumb.t1 {
+    background: linear-gradient(135deg, #0f1a10, #1d2a1e);
+  }
+  .tpl-thumb.t1::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 30% 30%, rgba(110,255,58,0.3) 0%, transparent 60%);
+  }
+  .tpl-thumb.t2 {
+    background: #111611;
+  }
+  .tpl-thumb.t2::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      45deg, rgba(110,255,58,0.06) 0px, rgba(110,255,58,0.06) 1px,
+      transparent 1px, transparent 8px
+    );
+  }
+
+  .tpl-thumb.t3 {
+    background: linear-gradient(145deg, #e8f5e2 0%, #d4edcc 40%, #c8e8be 100%);
+  }
+  .tpl-thumb.t3::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(145deg, #e8f5e2 0%, #d4edcc 40%, #c8e8be 100%
+    );
+    
+  }
+
+
+  .tpl-info { flex: 1; }
+  .tpl-name { font-family: var(--font-display); font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 3px; }
+  .tpl-desc { font-size: 10px; color: var(--text-dim); line-height: 1.4; }
+
+  .tpl-indicator {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 8px var(--green);
+    opacity: 0;
+    flex-shrink: 0;
+  }
+  .tpl-card.active .tpl-indicator { opacity: 1; }
+
+  /* Content fields */
+  .fields {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .field { display: flex; flex-direction: column; gap: 5px; }
+
+  .field label {
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+  }
+
+  .field input,
+  .field textarea {
+    background: #0d120d;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    color: var(--text);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    padding: 8px 10px;
+    outline: none;
+    resize: vertical;
+    transition: border-color 0.15s;
+    line-height: 1.5;
+  }
+  .field input:focus,
+  .field textarea:focus {
+    border-color: rgba(110,255,58,0.4);
+  }
+  .field textarea { min-height: 52px; }
+
+  .bullet-group { display: flex; flex-direction: column; gap: 6px; }
+
+  .hint { font-size: 10px; color: var(--text-dim); line-height: 1.4; padding: 0 12px 8px; }
+
+  /* ── Export button ── */
+  .export-area {
+    padding: 12px;
+    border-top: 1px solid var(--border);
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .format-row {
+    display: flex;
+    gap: 6px;
+  }
+
+  .fmt-btn {
+    flex: 1;
+    padding: 6px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    color: var(--text-dim);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.15s;
+    text-align: center;
+  }
+  .fmt-btn.active, .fmt-btn:hover {
+    border-color: var(--green);
+    color: var(--green);
+    background: var(--green-dim);
+  }
+
+  .dl-btn {
+    width: 100%;
+    padding: 12px;
+    background: var(--green);
+    border: none;
+    border-radius: 2px;
+    color: #0a120a;
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.15s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .dl-btn:hover { background: #8fff5a; box-shadow: 0 0 20px var(--green-glow); }
+  .dl-btn:active { transform: scale(0.98); }
+  .dl-btn.loading { opacity: 0.6; pointer-events: none; }
+
+  .size-note { font-size: 9px; color: var(--text-dim); text-align: center; letter-spacing: 1px; }
+
+  /* ── Right panel — preview ── */
+  .right {
+    background: #0a0f0a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .right::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(110,255,58,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(110,255,58,0.03) 1px, transparent 1px);
+    background-size: 32px 32px;
+    pointer-events: none;
+  }
+
+  .preview-wrap {
+    position: relative;
+    z-index: 1;
+  }
+
+  .preview-label {
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: var(--text-dim);
+    text-align: center;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+
+  /* The actual 1:1 canvas — scaled to fit screen */
+  #canvas-wrapper {
+    width: min(500px, calc(100vw - 400px));
+    height: min(500px, calc(100vw - 400px));
+    position: relative;
+    box-shadow: 0 0 60px rgba(0,0,0,0.8), 0 0 0 1px rgba(110,255,58,0.15);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  /* The real 1080x1080 render target, scaled down */
+  #render-target {
+    width: 1080px;
+    height: 1080px;
+    transform-origin: top left;
+    position: absolute;
+    top: 0; left: 0;
+    font-family: var(--font-display);
+  }
+
+  /* ═══════════════════════════════════════
+     TEMPLATE STYLES (inside render-target)
+  ═══════════════════════════════════════ */
+
+  /* ── Template 1: Mesh Glow ── */
+  .tpl-mesh {
+    width: 1080px; height: 1080px;
+    position: relative;
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse 80% 60% at 20% 30%, #0d2b1a 0%, transparent 60%),
+      radial-gradient(ellipse 60% 80% at 80% 70%, #112a0e 0%, transparent 60%),
+      linear-gradient(135deg, #0f1a10 0%, #1d2a1e 40%, #141e15 100%);
+  }
+
+  .tpl-mesh .pcb-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%; height: 100%;
+    opacity: 0.18;
+  }
+
+  .tpl-mesh .orb {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  .tpl-mesh .orb1 {
+    width: 480px; height: 480px;
+    background: radial-gradient(circle, rgba(110,255,58,0.25) 0%, transparent 70%);
+    top: -120px; left: -100px;
+  }
+  .tpl-mesh .orb2 {
+    width: 320px; height: 320px;
+    background: radial-gradient(circle, rgba(58,200,30,0.18) 0%, transparent 70%);
+    bottom: 60px; right: 40px;
+  }
+
+  .tpl-mesh .inner {
+    position: relative;
+    z-index: 2;
+    padding: 96px 96px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 40px;
+  }
+
+  .tpl-mesh h2 {
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 900;
+    font-size: 100px;
+    line-height: 0.95;
+    color: #6eff3a;
+    text-shadow: 0 0 60px rgba(110,255,58,0.4), 0 0 120px rgba(110,255,58,0.15);
+    letter-spacing: -3px;
+  }
+
+  .tpl-mesh p {
+    font-size: 28px;
+    color: #a8c8a0;
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 300;
+    max-width: 760px;
+    line-height: 1.6;
+  }
+
+  .tpl-mesh ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .tpl-mesh ul li {
+    font-family: 'Share Tech Mono', monospace;
+    color: #6eff3a;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .tpl-mesh ul li::before {
+    content: '';
+    display: inline-block;
+    width: 48px; height: 2px;
+    background: #6eff3a;
+    box-shadow: 0 0 10px #6eff3a;
+    flex-shrink: 0;
+  }
+
+  /* ── Template 2: Carbon Grid ── */
+  .tpl-carbon {
+    width: 1080px; height: 1080px;
+    position: relative;
+    overflow: hidden;
+    background: #111611;
+  }
+
+  .tpl-carbon .grid-bg {
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      rgba(110,255,58,0.03) 0px, rgba(110,255,58,0.03) 1px,
+      transparent 1px, transparent 14px
+    );
+  }
+
+  .tpl-carbon .stripe {
+    position: absolute;
+    width: 200%; height: 45%;
+    background: linear-gradient(135deg, #1a3d1a 0%, #0d1f0d 50%, transparent 100%);
+    top: 25%; left: -50%;
+    transform: rotate(-8deg);
+    opacity: 0.7;
+  }
+
+  .tpl-carbon .neon-line {
+    position: absolute; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent 0%, #6eff3a 30%, #6eff3a 70%, transparent 100%);
+    opacity: 0.25;
+  }
+  .tpl-carbon .neon-line.top { top: 30%; }
+  .tpl-carbon .neon-line.bot { bottom: 28%; }
+
+  .tpl-carbon .inner {
+    position: relative;
+    z-index: 2;
+    padding: 96px 96px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 36px;
+  }
+
+  .tpl-carbon .tag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 18px;
+    color: #6eff3a;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    opacity: 0.8;
+  }
+
+  .tpl-carbon h2 {
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 900;
+    font-size: 96px;
+    line-height: 0.95;
+    letter-spacing: -3px;
+    background: linear-gradient(135deg, #ffffff 0%, #a0e890 60%, #6eff3a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .tpl-carbon p {
+    font-family: 'Exo 2', sans-serif;
+    font-size: 26px;
+    color: #7a9a72;
+    font-weight: 300;
+    max-width: 740px;
+    line-height: 1.7;
+  }
+
+  .tpl-carbon ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .tpl-carbon ul li {
+    font-family: 'Exo 2', sans-serif;
+    font-size: 22px;
+    color: #c8e8c0;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    font-weight: 400;
+  }
+
+  .tpl-carbon ul li .dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: #6eff3a;
+    box-shadow: 0 0 14px #6eff3a, 0 0 28px rgba(110,255,58,0.4);
+    flex-shrink: 0;
+  }
+  /* ── Template 3: Smaragd ── */
+  .tpl-smaragd {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    aspect-ratio: 1/1;
+    max-height: 900px;
+    border-radius: 4px;
+    overflow: hidden;
+    background: linear-gradient(145deg, #e8f5e2 0%, #d4edcc 40%, #c8e8be 100%);
+  }
+
+  .tpl-smaragd .geo {
+    position: absolute;
+  }
+
+  .tpl-smaragd .geo1 {
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    border: 60px solid rgba(58,140,30,0.08);
+    top: -150px; right: -150px;
+  }
+
+  .tpl-smaragd .geo2 {
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    border: 30px solid rgba(58,140,30,0.06);
+    bottom: -80px; left: -80px;
+  }
+
+  .tpl-smaragd .geo3 {
+    width: 200px; height: 200px;
+    background: rgba(58,140,30,0.06);
+    border-radius: 50%;
+    top: 50%; right: 8%;
+    transform: translateY(-50%);
+  }
+
+  .tpl-smaragd .thick-bar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 8px;
+    background: linear-gradient(180deg, #3a8c1e 0%, #6eff3a 50%, #3a8c1e 100%);
+  }
+
+  .tpl-smaragd .content {
+    position: relative;
+    z-index: 2;
+    padding: 60px 64px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 22px;
+  }
+
+  .tpl-smaragd .eyebrow {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: #3a8c1e;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+
+  .tpl-smaragd h2 {
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 900;
+    font-size: clamp(36px, 6vw, 68px);
+    line-height: 1;
+    color: #1a3a0a;
+    letter-spacing: -2px;
+  }
+
+  .tpl-smaragd h2 em {
+    font-style: normal;
+    color: #3a8c1e;
+  }
+
+  .tpl-smaragd p {
+    font-size: clamp(13px, 1.7vw, 16px);
+    color: #3a5a2a;
+    max-width: 460px;
+    line-height: 1.75;
+    font-weight: 400;
+  }
+
+  .tpl-smaragd ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .tpl-smaragd ul li {
+    font-size: clamp(12px, 1.5vw, 15px);
+    color: #2a4a1a;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-weight: 600;
+  }
+
+  .tpl-smaragd ul li .chip {
+    padding: 2px 10px;
+    background: #3a8c1e;
+    color: #e8f5e2;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 1px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <span class="logo">codestein</span>
+  <span class="subtitle">// IG Post Generator</span>
+  <span class="badge">1080 × 1080 px</span>
+</header>
+
+<div class="workspace">
+
+  <!-- ── LEFT PANEL ── -->
+  <div class="left">
+
+    <div class="section-label">// šablona</div>
+    <div class="templates">
+      <button class="tpl-card active" onclick="setTemplate('mesh')">
+        <div class="tpl-thumb t1"></div>
+        <div class="tpl-info">
+          <div class="tpl-name">Mesh Glow</div>
+          <div class="tpl-desc">Tmavý les, neonový glow,<br>PCB linie</div>
+        </div>
+        <div class="tpl-indicator"></div>
+      </button>
+      <button class="tpl-card" onclick="setTemplate('carbon')">
+        <div class="tpl-thumb t2"></div>
+        <div class="tpl-info">
+          <div class="tpl-name">Carbon Grid</div>
+          <div class="tpl-desc">Diagonální mřížka,<br>gradientový nadpis</div>
+        </div>
+        <div class="tpl-indicator"></div>
+      </button>
+      <button class="tpl-card" onclick="setTemplate('smaragd')">
+        <div class="tpl-.tpl-thumb t3"></div>
+        <div class="tpl-info">
+          <div class="tpl-name">Smaragd</div>
+          <div class="tpl-desc">Zelená paleta,<br>geometrické tvary</div>
+        </div>
+        <div class="tpl-indicator"></div>
+      </button>
+    </div>
+
+    <div class="section-label">// obsah</div>
+    <div class="fields">
+      <div class="field">
+        <label>Nadpis (řádky oddělte Enter)</label>
+        <textarea id="f-title" rows="3" placeholder="Píšeme&#10;budoucnost&#10;v kódu."></textarea>
+      </div>
+      <div class="field">
+        <label>Perex / popisný text</label>
+        <textarea id="f-body" rows="3" placeholder="Webové aplikace a digitální produkty, které fungují spolehlivě."></textarea>
+      </div>
+      <div class="field">
+        <label>Odrazka 1</label>
+        <input type="text" id="b1" placeholder="Vývoj na míru pro startupy i firmy">
+      </div>
+      <div class="field">
+        <label>Odrazka 2</label>
+        <input type="text" id="b2" placeholder="Moderní stack: React, Node, cloud">
+      </div>
+      <div class="field">
+        <label>Odrazka 3</label>
+        <input type="text" id="b3" placeholder="Rychlost, čistota kódu, výsledky">
+      </div>
+      <div class="field" id="field-tag" style="display:none">
+        <label>Tag řádek (Carbon Grid)</label>
+        <input type="text" id="f-tag" placeholder="codestein.cz / digital studio">
+      </div>
+    </div>
+
+    <p class="hint">Náhled se aktualizuje průběžně. Exportovaný obrázek je vždy 1080 × 1080 px.</p>
+
+    <div class="export-area">
+      <div class="format-row">
+        <button class="fmt-btn active" id="fmt-png" onclick="setFormat('png')">PNG</button>
+        <button class="fmt-btn" id="fmt-jpg" onclick="setFormat('jpg')">JPG</button>
+      </div>
+      <button class="dl-btn" id="dl-btn" onclick="exportImage()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v10M7 15l5 5 5-5"/><line x1="3" y1="21" x2="21" y2="21"/></svg>
+        Stáhnout
+      </button>
+      <div class="size-note">PNG — průhlednost, ostrost · JPG — menší soubor</div>
+    </div>
+
+  </div>
+
+  <!-- ── RIGHT PANEL ── -->
+  <div class="right">
+    <div class="preview-wrap">
+      <div class="preview-label">// náhled 1 : 1</div>
+      <div id="canvas-wrapper">
+        <div id="render-target">
+          <!-- dynamically filled -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  let currentTemplate = 'mesh';
+  let exportFormat = 'png';
+
+  // ── Scale render target to fit wrapper ──
+  function scaleCanvas() {
+    const wrapper = document.getElementById('canvas-wrapper');
+    const target  = document.getElementById('render-target');
+    const size    = wrapper.clientWidth;
+    const scale   = size / 1080;
+    target.style.transform = `scale(${scale})`;
+  }
+
+  window.addEventListener('resize', scaleCanvas);
+  scaleCanvas();
+
+  // ── Template switch ──
+  function setTemplate(t) {
+    currentTemplate = t;
+    document.querySelectorAll('.tpl-card').forEach(c => c.classList.remove('active'));
+    event.currentTarget.classList.add('active');
+    document.getElementById('field-tag').style.display = (t === 'carbon') ? 'flex' : 'none';
+    render();
+  }
+
+  function setFormat(f) {
+    exportFormat = f;
+    document.getElementById('fmt-png').classList.toggle('active', f === 'png');
+    document.getElementById('fmt-jpg').classList.toggle('active', f === 'jpg');
+  }
+
+  // ── Live update on any input ──
+  document.querySelectorAll('input, textarea').forEach(el => {
+    el.addEventListener('input', render);
+  });
+
+  // ── Render ──
+  function getLines(id, fallback) {
+    const v = document.getElementById(id).value.trim();
+    return v || fallback;
+  }
+
+  function bullet(id, fallback) {
+    const v = document.getElementById(id).value.trim();
+    return v || fallback;
+  }
+
+  function escHtml(s) {
+    return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  function titleLines(raw) {
+    return raw.split('\n').filter(l => l.trim()).map(l => escHtml(l)).join('<br>');
+  }
+
+  function render() {
+    const title  = titleLines(getLines('f-title', 'Píšeme\nbudoucnost\nv kódu.'));
+    const body   = escHtml(getLines('f-body', 'Webové aplikace a digitální produkty, které fungují spolehlivě od prvního commitu po finální deploy.'));
+    const b1     = escHtml(bullet('b1', 'Vývoj na míru pro startupy i firmy'));
+    const b2     = escHtml(bullet('b2', 'Moderní stack: React, Node, cloud'));
+    const b3     = escHtml(bullet('b3', 'Rychlost, čistota kódu, výsledky'));
+    const tag    = escHtml(document.getElementById('f-tag').value.trim() || 'codestein.cz / digital studio');
+
+    let html = '';
+
+    if (currentTemplate === 'mesh') {
+      html = `
+      <div class="tpl-mesh">
+        <svg class="pcb-svg" viewBox="0 0 1080 1080" preserveAspectRatio="xMidYMid slice" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="0" y1="240" x2="1080" y2="240" stroke="#6eff3a" stroke-width="1.2"/>
+          <line x1="0" y1="840" x2="1080" y2="840" stroke="#6eff3a" stroke-width="1.2"/>
+          <line x1="240" y1="0" x2="240" y2="1080" stroke="#6eff3a" stroke-width="1.2"/>
+          <line x1="840" y1="0" x2="840" y2="1080" stroke="#6eff3a" stroke-width="1.2"/>
+          <line x1="0" y1="540" x2="400" y2="540" stroke="#6eff3a" stroke-width="1.2"/>
+          <line x1="680" y1="540" x2="1080" y2="540" stroke="#6eff3a" stroke-width="1.2"/>
+          <line x1="540" y1="0" x2="540" y2="380" stroke="#6eff3a" stroke-width="1.2"/>
+          <line x1="540" y1="700" x2="540" y2="1080" stroke="#6eff3a" stroke-width="1.2"/>
+          <circle cx="240" cy="240" r="10" stroke="#6eff3a" stroke-width="2"/>
+          <circle cx="240" cy="240" r="4" fill="#6eff3a"/>
+          <circle cx="840" cy="240" r="10" stroke="#6eff3a" stroke-width="2"/>
+          <circle cx="840" cy="240" r="4" fill="#6eff3a"/>
+          <circle cx="240" cy="840" r="10" stroke="#6eff3a" stroke-width="2"/>
+          <circle cx="240" cy="840" r="4" fill="#6eff3a"/>
+          <circle cx="840" cy="840" r="10" stroke="#6eff3a" stroke-width="2"/>
+          <circle cx="840" cy="840" r="4" fill="#6eff3a"/>
+          <circle cx="540" cy="540" r="16" stroke="#6eff3a" stroke-width="2"/>
+          <circle cx="540" cy="540" r="5" fill="#6eff3a"/>
+          <path d="M360 240 L360 360 L540 360" stroke="#6eff3a" stroke-width="1.2"/>
+          <path d="M720 840 L720 720 L540 720" stroke="#6eff3a" stroke-width="1.2"/>
+          <rect x="80" y="220" width="56" height="20" rx="2" stroke="#6eff3a" stroke-width="1.2"/>
+          <rect x="940" y="844" width="56" height="20" rx="2" stroke="#6eff3a" stroke-width="1.2"/>
+          <rect x="520" y="60" width="20" height="48" rx="2" stroke="#6eff3a" stroke-width="1.2"/>
+        </svg>
+        <div class="orb orb1"></div>
+        <div class="orb orb2"></div>
+        <div class="inner">
+          <h2>${title}</h2>
+          <p>${body}</p>
+          <ul>
+            <li>${b1}</li>
+            <li>${b2}</li>
+            <li>${b3}</li>
+          </ul>
+        </div>
+      </div>`;
+    } else if (currentTemplate === 'smaragd') {
+      html = `
+      <div class="tpl-smaragd">
+        <div class="geo geo1"></div>
+        <div class="geo geo2"></div>
+        <div class="geo geo3"></div>
+        <div class="thick-bar"></div>
+        <div class="content">
+          <span class="eyebrow">codestein.cz</span>
+          <h2>${title}</h2>
+          <p>${body}</p>
+          <ul>
+            <li><span class="chip">1.</span>${b1}</li>
+            <li><span class="chip">2.</span>${b2}</li>
+            <li><span class="chip">3.</span>${b3}</li>
+          </ul>
+        </div>
+      </div>`;}
+    
+    
+    else {
+      html = `
+      <div class="tpl-carbon">
+        <div class="grid-bg"></div>
+        <div class="stripe"></div>
+        <div class="neon-line top"></div>
+        <div class="neon-line bot"></div>
+        <div class="inner">
+          <span class="tag">${tag}</span>
+          <h2>${title}</h2>
+          <p>${body}</p>
+          <ul>
+            <li><span class="dot"></span>${b1}</li>
+            <li><span class="dot"></span>${b2}</li>
+            <li><span class="dot"></span>${b3}</li>
+          </ul>
+        </div>
+      </div>`;
+    }
+    
+
+    document.getElementById('render-target').innerHTML = html;
+  }
+
+  // ── Export ──
+  async function exportImage() {
+    const btn = document.getElementById('dl-btn');
+    btn.classList.add('loading');
+    btn.textContent = 'Generuji...';
+
+    const target = document.getElementById('render-target');
+    const origTransform = target.style.transform;
+    target.style.transform = 'none';
+
+    try {
+      const canvas = await html2canvas(target, {
+        width: 1080,
+        height: 1080,
+        scale: 1,
+        useCORS: true,
+        backgroundColor: null,
+        logging: false,
+        allowTaint: true,
+        onclone: (doc) => {
+          // ensure fonts are loaded in clone
+          const link = doc.createElement('link');
+          link.rel = 'stylesheet';
+          link.href = 'https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Exo+2:wght@300;400;700;900&display=swap';
+          doc.head.appendChild(link);
+        }
+      });
+
+      const isJpg = exportFormat === 'jpg';
+      const mime  = isJpg ? 'image/jpeg' : 'image/png';
+      const ext   = isJpg ? 'jpg' : 'png';
+      const quality = isJpg ? 0.92 : 1;
+
+      const dataUrl = canvas.toDataURL(mime, quality);
+      const a = document.createElement('a');
+      a.href = dataUrl;
+      a.download = `codestein-post.${ext}`;
+      a.click();
+    } catch(e) {
+      alert('Export selhal: ' + e.message);
+    }
+
+    target.style.transform = origTransform;
+    btn.classList.remove('loading');
+    btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v10M7 15l5 5 5-5"/><line x1="3" y1="21" x2="21" y2="21"/></svg> Stáhnout';
+  }
+
+  // Initial render
+  render();
+</script>
+</body>
+</html>

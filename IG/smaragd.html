@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Codestein — Brand Vizuály</title>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Exo+2:wght@300;400;700;900&display=swap"
+        rel="stylesheet">
+    <style>
+         *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #1a1a1a;
+    font-family: 'Exo 2', sans-serif;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+  }
+
+  .label {
+    color: #888;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+/* ─────────────────────────────────────────
+     VARIANTA 4 — Smaragd + geometrie, světlá
+  ───────────────────────────────────────── */
+  .smaragd {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    aspect-ratio: 1/1;
+    max-height: 900px;
+    border-radius: 4px;
+    overflow: hidden;
+    background: linear-gradient(145deg, #e8f5e2 0%, #d4edcc 40%, #c8e8be 100%);
+  }
+
+  .smaragd .geo {
+    position: absolute;
+  }
+
+  .smaragd .geo1 {
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    border: 60px solid rgba(58,140,30,0.08);
+    top: -150px; right: -150px;
+  }
+
+  .smaragd .geo2 {
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    border: 30px solid rgba(58,140,30,0.06);
+    bottom: -80px; left: -80px;
+  }
+
+  .smaragd .geo3 {
+    width: 200px; height: 200px;
+    background: rgba(58,140,30,0.06);
+    border-radius: 50%;
+    top: 50%; right: 8%;
+    transform: translateY(-50%);
+  }
+
+  .smaragd .thick-bar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 8px;
+    background: linear-gradient(180deg, #3a8c1e 0%, #6eff3a 50%, #3a8c1e 100%);
+  }
+
+  .smaragd .content {
+    position: relative;
+    z-index: 2;
+    padding: 60px 64px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 22px;
+  }
+
+  .smaragd .eyebrow {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px;
+    color: #3a8c1e;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+
+  .smaragd h2 {
+    font-family: 'Exo 2', sans-serif;
+    font-weight: 900;
+    font-size: clamp(36px, 6vw, 68px);
+    line-height: 1;
+    color: #1a3a0a;
+    letter-spacing: -2px;
+  }
+
+  .smaragd h2 em {
+    font-style: normal;
+    color: #3a8c1e;
+  }
+
+  .smaragd p {
+    font-size: clamp(13px, 1.7vw, 16px);
+    color: #3a5a2a;
+    max-width: 460px;
+    line-height: 1.75;
+    font-weight: 400;
+  }
+
+  .smaragd ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .smaragd ul li {
+    font-size: clamp(12px, 1.5vw, 15px);
+    color: #2a4a1a;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-weight: 600;
+  }
+
+  .smaragd ul li .chip {
+    padding: 2px 10px;
+    background: #3a8c1e;
+    color: #e8f5e2;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 1px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+</style>
+</head>
+
+<body>
+    <!-- ── VARIANTA 4 ── -->
+    <div>
+        <div class="smaragd">
+            <div class="thick-bar"></div>
+            <div class="geo geo1"></div>
+            <div class="geo geo2"></div>
+            <div class="geo geo3"></div>
+            <div class="content">
+                <span class="eyebrow">web development studio</span>
+                <h2>Váš web.<br><em>Váš kód.</em><br>Naše práce.</h2>
+                <p>Vytváříme digitální produkty, které přinášejí výsledky — rychlé, moderní a přesně na míru vašim potřebám.
+                </p>
+                <ul>
+                    <li><span class="chip">01</span>Webové aplikace na míru</li>
+                    <li><span class="chip">02</span>Design orientovaný na konverze</li>
+                    <li><span class="chip">03</span>Technická podpora a rozvoj</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    </body>
+    
+    </html>
