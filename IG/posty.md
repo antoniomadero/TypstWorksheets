@@ -11,28 +11,44 @@
       <p>#3 Scratch</p>
     </div>
 
-## Úterý
+## Středa
 
-  <h2>#1 Python</h2>
-    <br><br><br>
+### 1
+
+```
+  <h2 class="v2"><em>#1</em> Python</h2>
+    <br><br>
     <div class="content v1">
-      <p>- snadná syntaxe</p>
-      <p>- aktuálně </p>
-      <p>- dobrá čitelnost kódu</p>
+      <p class="v50">- jednoduchý zápis</p>
+      <p class="v50">- snadno se čte</p>
+      <p class="v50">- skvělé pro AI, data, web</p>
+      <p class="v50">- široce rozšířený</p>
     </div>
+```
 
-  <h2>#2 Javascript</h2>
-      <br><br><br>
-      <div class="content v1">
-        <p>- okamžitý výstup</p>
-        <p>- </p>
-        <p>- dobrá čitelnost kódu</p>
-      </div>
+### 2
 
-  <h2>#3 Scratch</h2>
-      <br><br><br>
-      <div class="content v1">
-        <p>- nepíšete žádný kód</p>
-        <p>- skládáte vizuální bloky </p>
-        <p>- dobré na naučení základů</p>
-      </div>
+```
+  <h2 class="v140"><em>#2</em><br> Scratch</h2>
+    <br><br>
+    <div class="content">
+      <p class="v50">- Žádné psaní kódu</p>
+      <p class="v50">- snadné skládání bloků</p>
+      <p class="v50">- skvělé pro začátečníky</p>
+      <p class="v60">- široce rozšířený</p>
+    </div>
+```
+
+### 3
+
+```
+  <h2 class="v2"><em>#3</em><br> Scratch</h2>
+    <br><br>
+    <div class="content">
+      <p>- nepíšete žádný kód</p>
+      <p>- skládáte bloky </p>
+      <p>- dobré na naučení základů</p>
+    </div>
+```
+
+## Pátek

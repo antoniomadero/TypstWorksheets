@@ -121,10 +121,6 @@ body {
     gap: 22px;
 }
 
-.smaragd .content .v1 p {
-    font-size: 40px;
-}
-
 .smaragd .eyebrow {
     font-family: 'Share Tech Mono', monospace;
     font-size: 11px;
@@ -147,6 +143,17 @@ body {
 .smaragd h2 em {
     font-style: normal;
     color: #3a8c1e;
+}
+.v140 {font-size: 140px !important;}
+.v60 {
+    font-size: 60px !important;
+}
+.v50 {
+    font-size: 60px !important;
+}
+.v40  {font-size: 40px !important; }
+.v30 {
+    font-size: 30px !important;
 }
 
 .smaragd h3 {
