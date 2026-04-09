@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1525" height="1525" viewBox="0 0 1525 1525" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="1525" height="1525" fill="none" stroke="black" stroke-width="1"/>
+  <rect x="0" y="0" width="1500" height="800" fill="none" stroke="black" stroke-width="1"/>
+  <rect x="500" y="0" width="1000" height="400" fill="none" stroke="black" stroke-width="1"/>
+  <rect x="0" y="0" width="500" height="400" fill="none" stroke="black" stroke-width="1"/>
+    <rect x="0" y="800" width="500" height="400" fill="none" stroke="black" stroke-width="1"/>
+    <rect x="500" y="800" width="500" height="400" fill="none" stroke="black" stroke-width="1"/>
+    <rect x="1000" y="800" width="500" height="400" fill="none" stroke="black" stroke-width="1"/>
+      <rect x="0" y="1200" width="500" height="300" fill="none" stroke="black" stroke-width="1"/>
+      <rect x="500" y="1200" width="1000" height="100" fill="none" stroke="black" stroke-width="1"/>
+      <rect x="500" y="1300" width="1000" height="100" fill="none" stroke="black" stroke-width="1"/>
+      <rect x="500" y="1400" width="1000" height="100" fill="none" stroke="black" stroke-width="1"/>
+  <rect x="0" y="400" width="500" height="400" fill="none" stroke="black" stroke-width="1"/>
+</svg>

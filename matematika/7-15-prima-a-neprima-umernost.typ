@@ -41,6 +41,4 @@ Ano, existuje univerzální postup, který lze použít pro oba případy přím
 + Identifikujte známé hodnoty a neznámou hodnotu, kterou chcete vypočítat.
 + použijte *Trojčlenku!*, která je univerzálním nástrojem pro řešení úloh s úměrností.
 
-== Trojčlenka
-
 

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chocolate Fraction Lab</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f0f8ff;
+            color: #333;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #5d4037;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        /* Chocolate Bar Styling */
+        #chocolate-bar {
+            display: grid;
+            gap: 4px;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #3e2723;
+            border-radius: 8px;
+            width: fit-content;
+            min-height: 150px;
+            border: 4px solid #2d1b18;
+        }
+
+        .piece {
+            width: 50px;
+            height: 60px;
+            background-color: #795548;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .piece.active {
+            background-color: #d7ccc8;
+            /* "Eaten" or highlight color */
+            transform: scale(0.9);
+            box-shadow: none;
+        }
+
+        /* Math Inputs */
+        .controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .fraction-input {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        input {
+            width: 60px;
+            font-size: 24px;
+            text-align: center;
+            padding: 5px;
+            border: 3px solid #795548;
+            border-radius: 10px;
+        }
+
+        .line {
+            width: 70px;
+            height: 4px;
+            background-color: #333;
+            margin: 5px 0;
+        }
+
+        .description {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #5d4037;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>🍫 Fraction Chocolate Lab</h1>
+
+    <div class="container">
+        <div id="chocolate-bar"></div>
+
+        <div class="description" id="text-desc">
+            3 out of 4 pieces
+        </div>
+
+        <div class="controls">
+            <div class="fraction-input">
+                <input type="number" id="numerator" value="3" min="0" max="12">
+                <div class="line"></div>
+                <input type="number" id="denominator" value="4" min="1" max="12">
+            </div>
+            <div style="font-size: 1.5rem;">of the bar</div>
+        </div>
+    </div>
+
+    <script>
+        const bar = document.getElementById('chocolate-bar');
+        const numInput = document.getElementById('numerator');
+        const denInput = document.getElementById('denominator');
+        const textDesc = document.getElementById('text-desc');
+
+        function updateFraction() {
+            let num = parseInt(numInput.value);
+            let den = parseInt(denInput.value);
+
+            // Validation
+            if (den < 1) den = 1;
+            if (num < 0) num = 0;
+            if (num > den) num = den; // Keep it a proper fraction for basics
+
+            numInput.value = num;
+            denInput.value = den;
+
+            // Clear bar
+            bar.innerHTML = '';
+
+            // Set Grid Layout (max 4 columns for looks)
+            const cols = den > 4 ? Math.ceil(den / 2) : den;
+            bar.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
+
+            // Create pieces
+            for (let i = 0; i < den; i++) {
+                const div = document.createElement('div');
+                div.classList.add('piece');
+                if (i >= num) {
+                    div.classList.add('active'); // "Inactive" pieces look eaten
+                }
+                bar.appendChild(div);
+            }
+
+            textDesc.innerText = `${num} out of ${den} pieces`;
+        }
+
+        numInput.addEventListener('input', updateFraction);
+        denInput.addEventListener('input', updateFraction);
+
+        // Init
+        updateFraction();
+    </script>
+</body>
+
+</html>
