@@ -4,25 +4,25 @@ Jméno a příjmení: #h(3fr)  Body:  #h(1fr)Známka:
 
 * 1. Rozlož na součin prvočísel * #h(1fr) 6 bodů
 
-225 =
+270 =
 
-360 =
+225 =
 
 192 =
 
 #v(1fr)
 
-* 2. Urči největší společný dělitel a nejmenší společný násobek čísel 120 a 126 * #h(1fr) 4 body
+* 2. Urči největší společný dělitel a nejmenší společný násobek čísel 108 a 144 * #h(1fr) 4 body
 
-D (120, 126) =
+D (108, 144) =
 
-n (120, 126) =
+n (108, 144) =
 
 #v(1fr)
 
 * 3. Dělitelnost - Slovní úloha * #h(1fr) 5 bodů
 
-Tatínek vyráběl žebřík. Na příčky si nachystal dvě tyče s rozměry 315 cm a 270 cm. Obě tyče rozřezal bez odpadu na co největší příčky. *_Urči délku jedné příčky a počet všech příček._*
+Tatínek vyráběl žebřík. Na příčky si nachystal dvě tyče s rozměry 315 cm a 360 cm. Obě tyče rozřezal bez odpadu na co největší příčky. *_Urči délku jedné příčky a počet všech příček._*
 
 #v(2fr)
 
