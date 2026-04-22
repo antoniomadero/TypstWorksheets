@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Zahradní hra</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="game-container">
+        <div class="garden" id="garden"></div>
+
+        <div class="control-panel">
+
+            <!-- Toolbar: zoom + zoom reset -->
+            <div class="editor-toolbar">
+                <span class="toolbar-label">📝 kód</span>
+                <button class="toolbar-btn" id="zoomOut" title="Zmenšit (-)">−</button>
+                <span class="zoom-display" id="zoomLabel">100%</span>
+                <button class="toolbar-btn" id="zoomIn" title="Zvětšit (+)">+</button>
+                <button class="toolbar-btn" id="zoomReset" title="Resetovat zoom"
+                    style="font-size:12px; padding:4px 8px;">1:1</button>
+            </div>
+
+            <!-- Line-numbered editor -->
+            <div class="editor-wrapper">
+                <div class="line-numbers" id="lineNumbers">1</div>
+                <textarea id="code" spellcheck="false" placeholder="Příklad vnořených cyklů:
+x=0
+y=0
+opakuj(3):
+  y=0
+  opakuj(3):
+    osej(x,y,jahody)
+    y+1;
+  x+1;"></textarea>
+            </div>
+
+            <!-- Run -->
+            <button class="run-btn" onclick="executeCode()">▶ Spustit kód</button>
+
+            <!-- Export -->
+            <div class="export-row">
+                <button class="export-btn" onclick="exportTxt()" title="Uložit jako .txt">💾 Export .txt</button>
+                <button class="export-btn" onclick="exportImg()" title="Uložit jako obrázek">🖼️ Export .png</button>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

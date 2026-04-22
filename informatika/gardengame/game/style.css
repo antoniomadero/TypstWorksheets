@@ -1,0 +1,199 @@
+﻿ * {
+     box-sizing: border-box;
+ }
+
+ body {
+     font-family: Arial, sans-serif;
+     margin: 20px;
+     display: flex;
+     gap: 20px;
+     background: #f5f0e8;
+ }
+
+ .game-container {
+     display: flex;
+     gap: 24px;
+     margin: 0 auto;
+     align-items: flex-start;
+ }
+
+ .garden {
+     display: grid;
+     grid-template-columns: repeat(8, 80px);
+     grid-template-rows: repeat(8, 80px);
+     gap: 0px;
+     border: 2px solid #8B4513;
+     flex-shrink: 0;
+ }
+
+ .cell {
+     width: 80px;
+     height: 80px;
+     background-color: #DEB887;
+     border: 1px solid #8B4513;
+     cursor: pointer;
+ }
+
+ /* ── Control panel ── */
+ .control-panel {
+     width: 340px;
+     display: flex;
+     flex-direction: column;
+     gap: 8px;
+ }
+
+ /* ── Editor toolbar ── */
+ .editor-toolbar {
+     display: flex;
+     align-items: center;
+     gap: 6px;
+     background: #3a3a3a;
+     padding: 6px 10px;
+     border-radius: 6px 6px 0 0;
+ }
+
+ .toolbar-label {
+     color: #aaa;
+     font-size: 12px;
+     margin-right: auto;
+     font-family: monospace;
+ }
+
+ .toolbar-btn {
+     background: #555;
+     color: #eee;
+     border: none;
+     border-radius: 4px;
+     padding: 4px 10px;
+     cursor: pointer;
+     font-size: 16px;
+     line-height: 1;
+     transition: background 0.15s;
+     width: auto;
+ }
+
+ .toolbar-btn:hover {
+     background: #6eff3a;
+     color: #222;
+ }
+
+ .zoom-display {
+     color: #6eff3a;
+     font-family: monospace;
+     font-size: 13px;
+     min-width: 40px;
+     text-align: center;
+ }
+
+ /* ── Code editor with line numbers ── */
+ .editor-wrapper {
+     display: flex;
+     background: #1e1e1e;
+     border-radius: 0 0 0 0;
+     overflow: hidden;
+     border: 2px solid #3a3a3a;
+     border-top: none;
+ }
+
+ .line-numbers {
+     background: #2a2a2a;
+     color: #666;
+     font-family: 'Courier New', Courier, monospace;
+     font-size: 14px;
+     line-height: 1.6;
+     padding: 10px 8px 10px 6px;
+     text-align: right;
+     user-select: none;
+     min-width: 36px;
+     border-right: 1px solid #444;
+     white-space: pre;
+     overflow: hidden;
+ }
+
+ #code {
+     flex: 1;
+     height: 300px;
+     font-family: 'Courier New', Courier, monospace;
+     font-size: 14px;
+     line-height: 1.6;
+     padding: 10px 10px 10px 10px;
+     background: #1e1e1e;
+     color: #d4d4d4;
+     border: none;
+     resize: none;
+     outline: none;
+     overflow-y: auto;
+     white-space: pre;
+     overflow-x: auto;
+     tab-size: 2;
+ }
+
+ #code::placeholder {
+     color: #555;
+ }
+
+ /* ── Run button ── */
+ .run-btn {
+     background-color: #4CAF50;
+     color: white;
+     padding: 11px 20px;
+     border: none;
+     cursor: pointer;
+     width: 100%;
+     font-size: 15px;
+     font-weight: bold;
+     border-radius: 6px;
+     letter-spacing: 0.5px;
+     transition: background 0.15s;
+ }
+
+ .run-btn:hover {
+     background-color: #45a049;
+ }
+
+ /* ── Export buttons row ── */
+ .export-row {
+     display: flex;
+     gap: 8px;
+ }
+
+ .export-btn {
+     flex: 1;
+     background: #2d6a8a;
+     color: #fff;
+     padding: 8px;
+     border: none;
+     cursor: pointer;
+     border-radius: 6px;
+     font-size: 13px;
+     font-family: monospace;
+     transition: background 0.15s;
+     width: auto;
+ }
+
+ .export-btn:hover {
+     background: #3a8ab5;
+ }
+
+ /* ── Plant colours ── */
+ .mrkev {
+     background-color: orange;
+ }
+
+ .jahody {
+     background-color: red;
+     background-image: url('jahody.png');
+     background-size: cover;
+ }
+
+ .salat {
+     background-color: lightgreen;
+     background-image: url('salat.png');
+     background-size: cover;
+ }
+
+ .okurky {
+     background-color: darkgreen;
+     background-image: url('okurky.png');
+     background-size: cover;
+ }
