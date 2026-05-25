@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="20cm" height="10cm"
+     viewBox="0 0 200 100">
+  <!-- Trojúhelníková mřížka 20x10 | 1 dílek = 1 cm -->
+  <!-- Vygenerováno: 28. 4. 2026 7:58:44 -->
+  <rect width="200" height="100" fill="white"/>
+  <polygon points="60,20 90,50 110,20" fill="#2563EB" fill-opacity="0.08" stroke="#2563EB" stroke-width="0.5"/>
+  <polygon points="20,90 60,90 70,60" fill="#DC2626" fill-opacity="0.08" stroke="#DC2626" stroke-width="0.5"/>
+  <polygon points="10,10 20,70 50,10" fill="#16A34A" fill-opacity="0.08" stroke="#16A34A" stroke-width="0.5"/>
+  <polygon points="90,90 130,20 120,90" fill="#7C3AED" fill-opacity="0.08" stroke="#7C3AED" stroke-width="0.5"/>
+  <polygon points="140,20 190,70 150,90" fill="#475569" fill-opacity="0.08" stroke="#475569" stroke-width="0.5"/>
+</svg>

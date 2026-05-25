@@ -1,6 +1,11 @@
-#set page(paper: "a4", margin: 1.5cm)
-#image("images/vyskyggb.svg")
-
+#set page(paper: "a4", margin: 1cm)
+= Výšky trojúhelníku:
+#image("images/vysky_2.svg", width: 20.5cm)
+= Obsah trojúhelníku:
 #v(1fr)
+= Těžnice trojúhelníku:
+#image("images/vysky_2.svg", width: 20.5cm)
 
-#image("images/vyskyggb.svg")
+
+
+
