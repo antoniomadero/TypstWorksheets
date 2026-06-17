@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="8cm" height="6cm"
+     viewBox="0 0 80 60">
+  <!-- Trojúhelníková mřížka 8x6 | 1 dílek = 1 cm -->
+  <!-- Vygenerováno: 8. 6. 2026 12:37:30 -->
+  <rect width="80" height="60" fill="white"/>
+  <polygon points="10,50 40,10 50,60" fill="#EAB308" fill-opacity="0.08" stroke="#EAB308" stroke-width="0.5"/>
+</svg>

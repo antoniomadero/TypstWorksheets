@@ -1,6 +1,6 @@
 #set page(margin: (top: 1.5cm, right: 2cm, bottom: 2cm, left: 2cm))
 #align(center)[= 3. čtvrtletní písemná práce  - 7. ročník]
-#let m = h(0.3cm)
+#let m = h(0.35cm)
 Jméno a příjmení: #h(3fr)  Body:  #h(1fr)Známka:
 
 *  1. Poměr * #h(1fr) 4 body
