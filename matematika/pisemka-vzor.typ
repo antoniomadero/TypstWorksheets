@@ -4,7 +4,7 @@
 
 #let max-body = 8
 
-#let jednicka-od = calc.round(max-body * 0.90)
+#let jednicka-od = calc.round(max-body * 0.91)
 #let dvojka-od = calc.round(max-body * 0.75)
 #let trojka-od = calc.round(max-body * 0.4)
 #let ctyrka-od = calc.round(max-body * 0.25)
@@ -56,65 +56,8 @@
 
   variant-box(title: "Písemná práce – Varianta A", [
 
-    *1. Sčítání desetinných čísel:*
-
-    #enum(
-      [$12,45 + 3,8 =$ ],
-      [$7,89 + 0,56 =$ ],
-    )
-    #v(1fr)
-    *2. Odčítání desetinných čísel:*
-
-    #enum(
-      [$56,2 - 14,75 =$ ],
-      [$23,4 - 5,67 =$ ],
-    )
-    #v(1fr)
-
-    *3. Násobení desetinných čísel:*
-
-    #enum(
-      [$4,6 dot 2,5 =$ ],
-      [$0,84 dot 3,2 =$ ],
-    )
-    #v(1fr)
-    *4. Dělení desetinných čísel:*
-
-    #enum(
-      [$15,6 : 2,4 =$ ],
-      [$7,35 : 0,5 =$ ],
-    )
-    #v(1fr)
   ]),
   variant-box(title: "Písemná práce – Varianta B", [
 
-    *1. Sčítání desetinných čísel:*
-
-    #enum(
-      [$15,34 + 4,7 =$ ],
-      [$4,06 + 112,5 =$ ],
-    )
-    #v(1fr)
-    *2. Odčítání desetinných čísel:*
-
-    #enum(
-      [$63,1 - 12,45 =$ ],
-      [$80,2 - 34,71 =$ ],
-    )
-    #v(1fr)
-    *3. Násobení desetinných čísel:*
-
-    #enum(
-      [$3,8 dot 1,5 =$ ],
-      [$0,72 dot 4,5 =$ ],
-    )
-    #v(1fr)
-    *4. Dělení desetinných čísel:*
-
-    #enum(
-      [$18,9 : 2,7 =$ ],
-      [$6,48 : 0,8 =$ ],
-    )
-    #v(1fr)
   ]),
 )
