@@ -2,11 +2,10 @@
 #set text(size: 13pt, lang: "cs")
 #set enum(numbering: "a)", spacing: 1.3cm)
 
-#let max-body = 6
-
-#let jednicka-od = calc.floor(max-body * 0.91)
+#let max-body = 12
+#let jednicka-od = calc.floor(max-body * 0.92)
 #let dvojka-od = calc.floor(max-body * 0.75)
-#let trojka-od = calc.floor(max-body * 0.4)
+#let trojka-od = calc.floor(max-body * 0.45)
 #let ctyrka-od = calc.floor(max-body * 0.25)
 
 #let variant-box(title: "Varianta A", body) = {
@@ -23,7 +22,6 @@
     ]
   ]
 
-  v(1em)
   body
   v(-2cm)
   block(
@@ -50,7 +48,7 @@
   ]
 }
 
-#let priklad(a, b) = pad(x: 1cm, table(
+#let priklad(a, b) = pad(x: 2cm, table(
   columns: 1,
 
   align: right,
@@ -58,6 +56,7 @@
   stroke: (x, y) => if y == 3 {
     (bottom: 1pt)
   },
+
   [#text()[#a]],
   [#v(0.5em)],
   [#text()[#b]],
@@ -69,63 +68,33 @@
   column-gutter: 1.5cm,
 
   variant-box(title: "Písemná práce – Varianta A", [
-    == Vypočítej:
+    * Vypočítej a u dělení proveď zkoušku: *
     #set text(size: 1.2em, tracking: 0.08em)
-    #v(1em)
-    #grid(
-      columns: 2,
-      gutter: 1fr,
-      [
-        #priklad("28654", "+17328")
-        #v(1fr)
+    #priklad("12865", "· 25")
+    #v(1fr)
 
-        #priklad("275432", "-265098")
-        #v(1fr)
+    #priklad("7432", "· 43")
+    #v(1fr)
 
-        #priklad("543210", "+123789")
-        #v(1fr)
-      ],
-      [
-        #priklad("28654", "-17328")
-        #v(1fr)
+    15 234 : 3 =
+    #v(1fr)
+    256 904 : 6 =
+    #v(2fr)
 
-        #priklad("565432", "+321398")
-        #v(1fr)
-
-        #priklad("543210", "-123789")
-        #v(1fr)
-      ],
-    )
 
   ]),
-  variant-box(title: "Písemná práce – Varianta A", [
-    == Vypočítej:
-    #v(1em)
-    #grid(
-      columns: 2,
-      gutter: 1fr,
-      [
-        #set text(size: 1.2em, tracking: 0.08em)
-        #priklad("28654", "+17328")
-        #v(1fr)
+  variant-box(title: "Písemná práce – Varianta B", [
+    * Vypočítej a u dělení proveď zkoušku: *
+    #set text(size: 1.2em, tracking: 0.08em)
+    #priklad("13942", "· 24")
+    #v(1fr)
+    #priklad("6851", "· 37")
+    #v(1fr)
 
-        #priklad("765432", "-321098")
-        #v(1fr)
-
-        #priklad("543210", "+123789")
-        #v(1fr)
-      ],
-      [
-        #priklad("28654", "+17328")
-        #v(1fr)
-
-        #priklad("765432", "-321098")
-        #v(1fr)
-
-        #priklad("543210", "+123789")
-        #v(1fr)
-      ],
-    )
+    18 456 : 4 =
+    #v(1fr)
+    372 816 : 8 =
+    #v(2fr)
 
   ]),
 )
