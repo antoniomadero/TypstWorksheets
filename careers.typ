@@ -110,12 +110,12 @@
   ",
   base-theme: "default",
   theme: (
-    font_size: 35,
+    font_size: 55,
     background: "#ffffff",
     primary_color: "#ff0000",
   ),
   layout: (
-    node_spacing: 50,
+    node_spacing: 220,
     rank_spacing: 0,
   ),
 )
