@@ -74,7 +74,7 @@
       [
         f) 5 km = #h(3cm) m #linebreak()
         #v(0.5cm)
-        g) 360 cm = #h(3cm) m #linebreak()
+        g) 360 cm = #h(1cm) m #h(2cm) cm#linebreak()
         #v(0.5cm)
         h) 42 m = #h(3cm) cm #linebreak()
         #v(0.5cm)
@@ -92,7 +92,7 @@
       [
         a) 3 t = #h(3cm) kg #linebreak()
         #v(0.5cm)
-        b) 4 500 kg = #h(3cm) t #linebreak()
+        b) 4 500 kg = #h(1cm) t #h(2cm) kg#linebreak()
         #v(0.5cm)
         c) 7 kg = #h(3cm) g #linebreak()
         #v(0.5cm)
@@ -135,7 +135,7 @@
       [
         f) 7 km = #h(3cm) m #linebreak()
         #v(0.5cm)
-        g) 480 cm = #h(3cm) m #linebreak()
+        g) 480 cm = #h(1cm) m #h(2cm) cm#linebreak()
         #v(0.5cm)
         h) 56 m = #h(3cm) cm #linebreak()
         #v(0.5cm)
@@ -157,7 +157,7 @@
         #v(0.5cm)
         c) 9 kg = #h(3cm) g #linebreak()
         #v(0.5cm)
-        d) 35 000 g = #h(3cm) kg #linebreak()
+        d) 3 500 g = #h(1cm) kg #h(2cm) g #linebreak()
         #v(0.5cm)
         e) 7 000 kg = #h(3cm) t
         #v(0.5cm)
