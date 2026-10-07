@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="cs">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Prezentace vytvořená pomocí Reveal.js">
+    <title>Název prezentace</title>
+
+    <link rel="stylesheet" href="reveal.js/reveal.css">
+    <link rel="stylesheet" href="reveal.js/theme/simple.css">
+    <link rel="stylesheet" href="reveal.js/plugin/highlight/monokai.css">
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section
+                data-markdown="slides.md"
+                data-separator="^\n---\n$"
+                data-separator-vertical="^\n--\n$">
+            </section>
+        </div>
+    </div>
+
+    <script src="reveal.js/reveal.js"></script>
+    <script src="reveal.js/plugin/markdown.js"></script>
+    <script src="reveal.js/plugin/highlight.js"></script>
+    <script src="reveal.js/plugin/math.js"></script>
+    <script>
+        Reveal.initialize({
+            hash: true,
+            controls: true,
+            progress: true,
+            slideNumber: true,
+            center: true,
+            transition: "slide",
+            width: 1280,
+            height: 720,
+            plugins: [RevealMarkdown, RevealHighlight, RevealMath]
+        });
+    </script>
+</body>
+</html>
