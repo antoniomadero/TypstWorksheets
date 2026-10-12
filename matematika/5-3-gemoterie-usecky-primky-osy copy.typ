@@ -59,8 +59,8 @@
       Narýsuj úsečku $overline(A B)$ délky $7 "cm"$ a sestroj její osu.
     ][
       Narýsuj $o$, pro kterou platí $o perp p$ a $O in o$. Poté narýsuj
-      $m$, pro kterou platí $m parallel p$ a $O in m$.
-      A nakonec $n parallel p$ pro kterou platé  a $O in n$.
+      $m$, pro kterou platí $m parallel p$ a $M in m$.
+      A nakonec $n parallel p$ pro kterou platí  a $O in n$.
       #image("images/kolmice-rovnobezka.svg", width: 100%)
     ]
   ]),
@@ -69,8 +69,8 @@
       Narýsuj úsečku $overline(A B)$ délky $7 "cm"$ a sestroj její osu.
     ][
       Narýsuj $o$, pro kterou platí $o perp p$ a $O in o$. Poté narýsuj
-      $m$, pro kterou platí $m parallel p$ a $O in m$.
-      A nakonec $n parallel p$ pro kterou platé  a $O in n$.
+      $m$, pro kterou platí $m parallel p$ a $M in m$.
+      A nakonec $n parallel p$ pro kterou platí  a $O in n$.
       #image("images/kolmice-rovnobezka.svg", width: 100%)
     ]
   ]),
