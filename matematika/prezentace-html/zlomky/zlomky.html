@@ -9,43 +9,101 @@
     <link rel="stylesheet" href="styles.css">
     
 </head>
+
 <body>
-    <div class="reveal">
+
+    <div class="reveal">    
         <div class="slides">
-            <section>
-                <p class="subtitle">Matematika</p>
-                <h1>Krácení <span class="accent">zlomků</span></h1>
-                <p class="subtitle">Čitatele i jmenovatele dělíme stejným číslem.</p>
-            </section>
 
             <section>
-                <h2>Krácení zlomků</h2>
-                <div class="lesson">
-                    <p>Čitatele i jmenovatele vydělíme číslem <strong class="accent">6</strong>:</p>
-                    <img src="./zlomky_1.svg" alt="Ukázka krácení zlomků">
-                </div>
-            </section>
 
-            <section>
-                <h2>Krácení zlomků</h2>
-                <div class="lesson">
-                    <p>Čitatele i jmenovatele vydělíme číslem <strong class="accent">3</strong>:</p>
-                    <video controls preload="metadata">
-                        <source src="zlomky_1.mp4" type="video/mp4">
+                <section>
+                    <h1>Krácení <span class="accent">zlomků</span></h1>
+                    <video data-autoplay controls preload="metadata">
+                        <source src="media/zlomky_uzjsilamal.mp4" type="video/mp4">
                         Váš prohlížeč nepodporuje přehrávání videa.
                     </video>
-                </div>
-            </section>
-        </div>
+                </section>
+
+                <section>
+                    <h2>Stejné zlomky, různý zápis</h2>
+                    <div class="lesson">
+                        <p>Někdy stejnou část celku můžeme vyjádřit různým zlomkem. Přestože jsou různé, označují stejnou část (například kdybychom vybarvili kruh, bude vybarvena stejná část).</p>
+                        <img src="./zlomky_1.svg" alt="Příklady zápisu stejných zlomků">
+                        <img src="media/zlomek_3_4.svg" alt="Vybarvený kruh znázorňující stejnou část celku" class="fraction-image">
+                        <img src="media/zlomek_9_12.svg" alt="Vybarvený kruh znázorňující stejnou část celku" class="fraction-image">
+                    </div>
+                </section>
+
+                <section>
+
+                    <h2>Krácení zlomků</h2>
+                    <div class="lesson">
+                        <p>A když chci tedy složitý zápis zjednodušit?
+                            <br>
+                            <br>
+                            <video data-autoplay controls preload="metadata">
+                                <source src="media/zlomky_zkratto.mp4" type="video/mp4">
+                                Váš prohlížeč nepodporuje přehrávání videa.
+                            </video>
+                            </p>
+
+                        <p><strong class="accent">Zkrátit zlomek znamená čitatele i jmenovatele vydělit stejným číslem (různým od nuly!)
+                        </strong>
+                        
+                        <img src="./zlomky_2.svg" alt="Ukázka krácení zlomků" >
+                    </p>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Čím tedy krátit?</h2>
+                    <div class="lesson">
+                        <p>Nejlépe je najít <strong class="accent">největší společný dělitel</strong> pro čitatele a jmenovatele. Pokud se vám to nepovede hned, můžete zkusit krátit postupně menšími čísly.</p>
+                        <p>
+                        <img src="./zlomky_3.svg" alt="Ukázka krácení zlomků">
+                        </p>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Jak poznám, že jsem na konci?</h2>
+                    <div class="lesson">
+                        <p>Pokud již čitatele a jmenovatele nelze dále krátit (jsou to nesoudělná čísla), jsme na konci, máme tzv.<br> <strong class="accent">základní tvar</strong>.
+                            <br>
+                            <br>
+                        <em>Základní tvar je nejmenší možný zápis zlomku.</em></p>
+                        <img src="./zlomky_4.svg" alt="Ukázka krácení zlomků">
+                    </div>
+                </section>
+
+                <section>
+                    <h2>A na závěr...</h2>
+                    
+                        <p>Není to složité, ale...
+
+                            <video data-autoplay controls preload="metadata">
+                                <source src="media/zlomky_matematikatemiluje.mp4" type="video/mp4">
+                                Váš prohlížeč nepodporuje přehrávání videa.
+                            </video>
+                        </p> 
+                </section>
+
+                        </section>
+
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
     <script>
         Reveal.initialize({
+            width: 1600,
+            height: 900,
             controls: true,
             progress: true,
             hash: true,
-            center: true,
-            transition: "slide"
+            center: false,
+            transition: "slide",
+            navigationMode: 'default'
         });
     </script>
 </body>

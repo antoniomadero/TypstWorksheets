@@ -42,12 +42,12 @@ body {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     align-items: center;
-    gap: 1.5em;
+    gap: 1em;
     text-align: left;
 }
 
 .reveal .lesson p {
-    font-size: 1.05em;
+    font-size: 1em;
     line-height: 1.45;
 }
 
@@ -88,4 +88,36 @@ body {
     .reveal .lesson video {
         max-height: 40vh;
     }
+}
+
+
+
+.reveal .slides section {
+    padding: 1.2rem 3rem; /* reduce vertical padding and give more horizontal space */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* keep content toward the top */
+    align-items: stretch;
+}
+
+/* Move h2 closer to the top */
+.reveal h2 {
+    margin-top: 0.15em;
+    margin-bottom: 0.5em;
+}
+
+@media (max-width: 700px) {
+    .reveal {
+        max-width: 100%;
+        padding: 0 0.5rem;
+    }
+
+    .reveal .slides section {
+        padding: 0.8rem 1rem;
+    }
+}
+.fraction-image {
+    max-height: 300px !important; /* Adjust the size as needed */
+    margin: 0 !important; /* Center the image and add some vertical spacing */
 }
