@@ -1,0 +1,123 @@
+:root {
+    --ink: #18324b;
+    --accent: #087e8b;
+    --paper: #f5f8fc;
+}
+
+body {
+    background: var(--paper);
+}
+
+.reveal {
+    color: var(--ink);
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 30px;
+}
+
+.reveal h1,
+.reveal h2 {
+    color: var(--ink);
+    font-weight: 700;
+    text-transform: none;
+}
+
+.reveal h1 {
+    font-size: 2.2em;
+}
+
+.reveal h2 {
+    font-size: 1.5em;
+}
+
+.reveal .accent {
+    color: var(--accent);
+}
+
+.reveal .subtitle {
+    color: #52677c;
+    font-size: 1.05em;
+}
+
+.reveal .lesson {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 1em;
+    text-align: left;
+}
+
+.reveal .lesson p {
+    font-size: 1em;
+    line-height: 1.45;
+}
+
+.reveal .lesson img,
+.reveal .lesson video {
+    display: block;
+    width: 100%;
+    max-height: 58vh;
+    margin: 0 auto;
+    object-fit: contain;
+}
+
+.reveal .lesson img {
+    background: #fff;
+    border-radius: 0.25em;
+}
+
+.reveal .lesson video {
+    border-radius: 0.25em;
+}
+
+.reveal .controls,
+.reveal .progress {
+    color: var(--accent);
+}
+
+@media (max-width: 700px) {
+    .reveal {
+        font-size: 24px;
+    }
+
+    .reveal .lesson {
+        grid-template-columns: 1fr;
+        gap: 0.5em;
+    }
+
+    .reveal .lesson img,
+    .reveal .lesson video {
+        max-height: 40vh;
+    }
+}
+
+
+
+.reveal .slides section {
+    padding: 1.2rem 3rem; /* reduce vertical padding and give more horizontal space */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* keep content toward the top */
+    align-items: stretch;
+}
+
+/* Move h2 closer to the top */
+.reveal h2 {
+    margin-top: 0.15em;
+    margin-bottom: 0.5em;
+}
+
+@media (max-width: 700px) {
+    .reveal {
+        max-width: 100%;
+        padding: 0 0.5rem;
+    }
+
+    .reveal .slides section {
+        padding: 0.8rem 1rem;
+    }
+}
+.fraction-image {
+    max-height: 300px !important; /* Adjust the size as needed */
+    margin: 0 !important; /* Center the image and add some vertical spacing */
+}
