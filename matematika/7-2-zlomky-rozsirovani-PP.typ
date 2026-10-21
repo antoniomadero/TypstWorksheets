@@ -2,7 +2,7 @@
 #set text(size: 9.5pt, lang: "cs")
 #set enum(numbering: "a)", spacing: 1.3cm)
 
-#let max-body = 10
+#let max-body = 8
 
 #let jednicka-od = calc.round(max-body * 0.91)
 #let dvojka-od = calc.round(max-body * 0.75)
@@ -55,33 +55,31 @@
   column-gutter: 1.5cm,
 
   variant-box(title: "Písemná práce – Varianta A", [
-    Vypočítej a zkrať zlomek na základní tvar. Za každý správný výsledek 1 bod.
+    Rozšiřte zlomky uvedeným číslem. Každá úloha je za 1 bod.
+    #set enum(spacing: 1.3cm)
+    + $frac(2, 5)$ číslem 3 =
+    + $frac(3, 7)$ číslem 4 =
+    + $frac(5, 8)$ číslem 6 =
+    + $frac(4, 9)$ číslem 5 =
 
-    + $frac(8, 12)$ =
-    + $frac(9, 15)$ =
-    + $frac(12, 20)$ =
-    + $frac(16, 24)$ =
-    + $frac(15, 35)$ =
-    + $frac(21, 28)$ =
-    + $frac(18, 27)$ =
-    + $frac(14, 49)$ =
-    + $frac(24, 36)$ =
-    + $frac(25, 40)$ =
+    Rozšiřte zlomky na uvedeného jmenovatele.
+    + $frac(3, 4)$ na jmenovatele 20 =
+    + $frac(5, 6)$ na jmenovatele 42 =
+    + $frac(7, 10)$ na jmenovatele 50 =
+    + $frac(2, 9)$ na jmenovatele 63 =
   ]),
   variant-box(title: "Písemná práce – Varianta B", [
-    Vypočítej a zkrať zlomek na základní tvar. Za každý správný výsledek 1 bod.
+    Rozšiřte zlomky uvedeným číslem. Každá úloha je za 1 bod.
+    #set enum(spacing: 1.3cm)
+    + $frac(3, 8)$ číslem 4 =
+    + $frac(4, 11)$ číslem 5 =
+    + $frac(5, 12)$ číslem 3 =
+    + $frac(7, 15)$ číslem 6 =
 
-    + $frac(8, 12)$ =
-    + $frac(9, 15)$ =
-    + $frac(12, 20)$ =
-    + $frac(16, 24)$ =
-    + $frac(15, 35)$ =
-    + $frac(21, 28)$ =
-    + $frac(18, 27)$ =
-    + $frac(14, 49)$ =
-    + $frac(24, 36)$ =
-    + $frac(25, 40)$ =
+    Rozšiřte zlomky na uvedeného jmenovatele.
+    + $frac(4, 7)$ na jmenovatele 35 =
+    + $frac(3, 8)$ na jmenovatele 56 =
+    + $frac(5, 9)$ na jmenovatele 45 =
+    + $frac(7, 10)$ na jmenovatele 70 =
   ]),
 )
-
-
