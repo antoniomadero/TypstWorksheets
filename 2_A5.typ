@@ -9,9 +9,9 @@
   gutter: 2cm,
 
   [
-    #include "letak-kariera-2026.typ"
+    #include "matematika/7-9-stredova-soumernost-PP.typ"
   ],
   [
-    #include "letak-kariera-2026.typ"
+    #include "matematika/7-9-stredova-soumernost-PP.typ"
   ],
 )
