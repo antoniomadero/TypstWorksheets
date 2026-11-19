@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="cs">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Krácení zlomků</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/white.css">
+    <link rel="stylesheet" href="styles.css">
+    
+</head>
+
+<body>
+
+    <div class="reveal">    
+        <div class="slides">
+
+            <section>
+                
+                <section>
+                    <h1>Sčítání <span class="accent">zlomků</span></h1>
+                    <video data-autoplay controls preload="metadata">
+                        <source src="media/zlomky_scitani_cast_01.mp4" type="video/mp4">
+                        Váš prohlížeč nepodporuje přehrávání videa.
+                    </video>
+                </section>
+                <section>
+                    <h2>Jak zlomky sčítáme?</h2>
+                    <div class="lesson">
+                        <p>Prvním krokem při sčítání zlomků je zajistit, že mají stejný jmenovatel. Pokud mají různé jmenovatele, musíme je nejprve převést na společný jmenovatel.<br>
+                            <strong class="accent">A co je tedy ten společný jmenovatel?</strong>
+                        </p>
+                        <video data-autoplay controls preload="metadata">
+                            <source src="media/zlomky_scitani_cast_02.mp4" type="video/mp4">
+                            Váš prohlížeč nepodporuje přehrávání videa.
+                        </video>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Úprava na společný jmenovatel</h2>
+                    <div class="lesson">
+                        
+                        <img src="media/zlomky_scitani_1.svg" alt="Ukázka sčítání zlomků">
+                        <p>Společný jmenovatel byl 6, proto jsme první zlomek museli rozšířit dvěma (3·2 = 6) a druhý zlomek třemi (2·3 = 6). <br>
+                        <span class="accent"><strong>Připoměň si: </strong></span>rozšířit zlomek znamená vynásobit čitatele i jmenovatele stejným číslem.
+                        </p>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>Druhý krok</h2>
+                    
+                        <p>Pokud zlomky již mají společný jmenovatel <br> (a nebo jsme je na něj pomocí rozšiřování převedli). <br>Stačí tento <strong class="accent">společný jmenovatel opsat a čitatele sečíst.</strong><br>
+                            
+                        </p>
+                        <img src="media/zlomky_scitani_2.svg" alt="Ukázka sčítání zlomků">
+                    
+                </section>
+
+                <section>
+                    <h2>A ještě jednou</h2>
+                    <div class="lesson">
+                        <img src="media/zlomky_scitani_3.svg" alt="Ukázka sčítání zlomků">
+                        <video data-autoplay controls preload="metadata">
+                            <source src="media/zlomky_scitani_cast_03.mp4" type="video/mp4">
+                            Váš prohlížeč nepodporuje přehrávání videa.
+                        </video>
+                        
+                    </div>
+                </section>
+
+                <section>
+                    
+                    <video data-autoplay controls preload="metadata">
+                        <source src="media/zlomky-scitani.mp4" type="video/mp4">
+                        Váš prohlížeč nepodporuje přehrávání videa.
+                    </video>
+                    <p><a href="../scitani_odcitani_zlomku/index.html" target="_blank">Procvičování</a></p>
+                </section>
+
+                
+
+            </section>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+    <script>
+        Reveal.initialize({
+            width: 1600,
+            height: 900,
+            controls: true,
+            progress: true,
+            hash: true,
+            center: false,
+            transition: "slide",
+            navigationMode: 'default'
+        });
+    </script>
+</body>
+</html>
