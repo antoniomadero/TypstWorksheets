@@ -53,4 +53,4 @@
 
 ---
 
-_Tip pro tisk do PDF z VS Code: Otevřete náhled Markdownu (`Ctrl+Shift+V`), klikněte pravým tlačítkem do okna a zvolte tisk (nebo použijte rozšíření **Markdown PDF**), nastavte orientaci **Na šířku (Landscape)** a okraje na **Minimální**._
+_Tip pro tisk do PDF z VS Code: otevřete soubor Markdown a stiskněte `Ctrl+Shift+P`, vyberte **Markdown PDF: Export (pdf)** (nebo klikněte pravým tlačítkem do editoru a vyberte stejný příkaz). Exportovaný PDF soubor se objeví vedle původního `.md` souboru._
